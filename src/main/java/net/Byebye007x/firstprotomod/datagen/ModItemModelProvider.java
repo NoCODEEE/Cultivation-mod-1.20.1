@@ -4,7 +4,6 @@ import net.Byebye007x.firstprotomod.ProtoMod;
 import net.Byebye007x.firstprotomod.item.ModItems;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.client.model.generators.ItemModelBuilder;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
@@ -16,16 +15,18 @@ public class ModItemModelProvider extends ItemModelProvider {
         super(output, ProtoMod.MOD_ID, existingFileHelper);
     }
 
+    // register model
     @Override
     protected void registerModels() {
-        simpleItem(ModItems.RUBY);
-        simpleItem(ModItems.RAW_RUBY);
-        simpleItem(ModItems.PINE_CONE);
-        simpleItem(ModItems.STRAWBERRY);
-
+        normalItem(ModItems.RUBY);
+        normalItem(ModItems.RAW_RUBY);
+        normalItem(ModItems.PINE_CONE);
+        normalItem(ModItems.STRAWBERRY);
+        normalItem(ModItems.TEST_HEART);
     }
 
-    private ItemModelBuilder simpleItem(RegistryObject<Item> item) {
+    // normal item
+    private ItemModelBuilder normalItem(RegistryObject<Item> item) {
         return withExistingParent(item.getId().getPath(),
                 new ResourceLocation("item/generated")).texture("layer0",
                 new ResourceLocation(ProtoMod.MOD_ID, "item/" + item.getId().getPath()));
