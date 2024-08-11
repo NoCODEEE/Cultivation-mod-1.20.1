@@ -12,6 +12,9 @@
   "block.firstprotomod.ruby_ore": "Ruby ore",
   "block.firstprotomod.sound_block": "Sound block",
 
-  "tooltip.firstprotomod.test_sword.tooltip": "Shooting arrows up your Ass!",
+  "tooltip.firstprotomod.test_sword.1": "LEGENDARY",
+  "tooltip.firstprotomod.test_sword.2": "1000 Damages",
+  "tooltip.firstprotomod.test_sword.3": "Shooting arrows up your Ass!",
+  "tooltip.firstprotomod.test_sword.4": "Unobtainable",
   "creativetab.firstprotomod_tab": "Test mod"
 }

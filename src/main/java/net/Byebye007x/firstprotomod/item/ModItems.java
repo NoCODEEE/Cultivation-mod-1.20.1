@@ -2,7 +2,9 @@ package net.Byebye007x.firstprotomod.item;
 
 import net.Byebye007x.firstprotomod.ProtoMod;
 import net.Byebye007x.firstprotomod.item.custom.CustomSword;
+import net.Byebye007x.firstprotomod.item.custom.FoodFuelItem;
 import net.Byebye007x.firstprotomod.item.custom.FuelItem;
+import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -16,13 +18,15 @@ public class ModItems extends Items {
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> RAW_RUBY = ITEMS.register("raw_ruby",
             () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> TEST_HEART = ITEMS.register("test_heart",
-            () -> new Item(new Item.Properties()));
+
     public static final RegistryObject<Item> PINE_CONE = ITEMS.register("pine_cone",
             () -> new FuelItem(new Item.Properties(), 400));
 
+    public static final RegistryObject<Item> TEST_HEART = ITEMS.register("test_heart",
+            () -> new FuelItem(new Item.Properties().food(ModFoods.SPEED_FOOD1), 800));
+
     public static final RegistryObject<Item> STRAWBERRY = ITEMS.register("strawberry",
-            () -> new Item(new Item.Properties().food(ModFoods.STRAWBERRY)));
+            () -> new Item(new Item.Properties().food(ModFoods.SPEED_FOOD1)));
 
     public static final RegistryObject<Item> TEST_SWORD = ITEMS.register("test_sword",
             () -> new CustomSword(Tiers.NETHERITE, 996, -3.0F, new Item.Properties()

@@ -1,7 +1,9 @@
 package net.Byebye007x.firstprotomod.item.custom;
 
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TextColor;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
@@ -55,7 +57,27 @@ public class CustomSword extends SwordItem {
 
     @Override
     public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
-        pTooltipComponents.add(Component.translatable("tooltip.firstprotomod.test_sword.tooltip"));
+        // Add a fancy text with color and bold formatting using translatable
+                pTooltipComponents.add(Component.translatable("tooltip.firstprotomod.test_sword.1")
+                .withStyle(ChatFormatting.GOLD, ChatFormatting.BOLD));
+
+        // Add italic text with a custom color using translatable
+        pTooltipComponents.add(Component.translatable("tooltip.firstprotomod.test_sword.2")
+                .withStyle(style -> style.withItalic(true).withColor(TextColor.fromRgb(0x00FF00)))); // Green color
+
+        // Add text with multiple formatting options using translatable
+        pTooltipComponents.add(Component.translatable("tooltip.firstprotomod.test_sword.3")
+                .withStyle(ChatFormatting.AQUA, ChatFormatting.ITALIC, ChatFormatting.UNDERLINE));
+
+        // Add a text with custom RGB color and strikethrough using translatable
+        pTooltipComponents.add(Component.translatable("tooltip.firstprotomod.test_sword.4")
+                .withStyle(style -> style.withColor(TextColor.fromRgb(0xFF5555)) // Red color
+                        .withStrikethrough(true)));
         super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+    }
+
+    @Override
+    public boolean isFireResistant() {
+        return super.isFireResistant();
     }
 }
