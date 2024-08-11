@@ -1,0 +1,5 @@
+// 1.20.1	2024-08-11T14:16:52.0991067	Loot Tables
+0dbad93eafcfc1e600d989eb25d980fca34d607e data/firstprotomod/loot_tables/blocks/raw_ruby_block.json
+ee1a54f99818e1f6860483882c91f67fc3cab30c data/firstprotomod/loot_tables/blocks/ruby_block.json
+5f43f8b951c9ff05597ca73062c31c59627e57ad data/firstprotomod/loot_tables/blocks/ruby_ore.json
+4144a8efd55664dd40ceb8cf44da8870d330c3ea data/firstprotomod/loot_tables/blocks/sound_block.json

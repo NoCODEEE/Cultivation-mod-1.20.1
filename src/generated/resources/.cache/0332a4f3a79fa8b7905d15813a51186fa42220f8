@@ -1,0 +1,13 @@
+// 1.20.1	2024-08-11T14:16:52.0991067	Block States: firstprotomod
+f25e6391587adae168e4b9a663f99cef5b0f85cd assets/firstprotomod/blockstates/raw_ruby_block.json
+7e5c56780f752f24f8d1e987015fe30c6c87aee5 assets/firstprotomod/blockstates/ruby_block.json
+edcb7afded9fee099215356da8ec0606116aa5c9 assets/firstprotomod/blockstates/ruby_ore.json
+2716760af95247446b9cb1c14613eeb7cbff0bde assets/firstprotomod/blockstates/sound_block.json
+a49756398084a6e8284771183cac24383e076957 assets/firstprotomod/models/block/raw_ruby_block.json
+3c52b5a57773f57d9f73a63deacb376d67e12d30 assets/firstprotomod/models/block/ruby_block.json
+1383c7615c0e926dad2639c54e4baaab79757eef assets/firstprotomod/models/block/ruby_ore.json
+98be19a79c96ac1037eca1c3e6aa3f7213acb26f assets/firstprotomod/models/block/sound_block.json
+e0690f8062653e885abd46bb94e339494282eee2 assets/firstprotomod/models/item/raw_ruby_block.json
+d3a03182d7460a6b7e5a2625b8d2f289f11cb5fd assets/firstprotomod/models/item/ruby_block.json
+af68ea7d6c26da98d05981f221cd28d606628bbd assets/firstprotomod/models/item/ruby_ore.json
+e053d6d3fc8df5adeb0b4435b03bbbfc2f4b6a0f assets/firstprotomod/models/item/sound_block.json
