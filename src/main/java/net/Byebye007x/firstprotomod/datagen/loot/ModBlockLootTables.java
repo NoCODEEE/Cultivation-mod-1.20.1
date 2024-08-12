@@ -30,8 +30,23 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(Modblocks.RAW_RUBY_BLOCK.get());
         this.dropSelf(Modblocks.SOUND_BLOCK.get());
 
+
+
+        this.dropSelf(Modblocks.RUBY_STAIR.get());
+        this.dropSelf(Modblocks.RUBY_BUTTON.get());
+        this.dropSelf(Modblocks.RUBY_PRESSURE_PLATE.get());
+        this.dropSelf(Modblocks.RUBY_FENCE.get());
+        this.dropSelf(Modblocks.RUBY_FENCE_GATE.get());
+        this.dropSelf(Modblocks.RUBY_TRAP_DOOR.get());
+        this.dropSelf(Modblocks.RUBY_WALL.get());
+
         this.add(Modblocks.RUBY_ORE.get(),
                 block -> createCopperLikeOreDrops(Modblocks.RUBY_ORE.get(), ModItems.RAW_RUBY.get()));
+
+        this.add(Modblocks.RUBY_SLAB.get(),
+                block -> createSlabItemTable(Modblocks.RUBY_SLAB.get()));
+        this.add(Modblocks.RUBY_DOOR.get(),
+                block -> createDoorTable(Modblocks.RUBY_DOOR.get()));
     }
 
     protected LootTable.Builder createCopperLikeOreDrops(Block pBlock, Item item) {

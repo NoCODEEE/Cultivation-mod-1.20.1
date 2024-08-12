@@ -2,6 +2,7 @@ package net.Byebye007x.firstprotomod.datagen;
 
 import net.Byebye007x.firstprotomod.ProtoMod;
 import net.Byebye007x.firstprotomod.block.Modblocks;
+import net.Byebye007x.firstprotomod.item.ModToolTiers;
 import net.Byebye007x.firstprotomod.util.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -43,5 +44,18 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
                 );
 
         this.tag(Tags.Blocks.NEEDS_NETHERITE_TOOL);
+
+        this.tag(ModTags.Blocks.NEEDS_CUSTOM_TOOL);
+
+
+        this.tag(BlockTags.FENCES)
+                .add(Modblocks.RUBY_FENCE.get()
+                );
+        this.tag(BlockTags.FENCE_GATES)
+                .add(Modblocks.RUBY_FENCE_GATE.get()
+                );
+        this.tag(BlockTags.WALLS)
+                .add(Modblocks.RUBY_WALL.get()
+                );
     }
 }

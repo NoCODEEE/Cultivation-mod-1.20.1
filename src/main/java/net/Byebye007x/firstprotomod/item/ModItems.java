@@ -2,9 +2,7 @@ package net.Byebye007x.firstprotomod.item;
 
 import net.Byebye007x.firstprotomod.ProtoMod;
 import net.Byebye007x.firstprotomod.item.custom.CustomSword;
-import net.Byebye007x.firstprotomod.item.custom.FoodFuelItem;
 import net.Byebye007x.firstprotomod.item.custom.FuelItem;
-import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -28,9 +26,23 @@ public class ModItems extends Items {
     public static final RegistryObject<Item> STRAWBERRY = ITEMS.register("strawberry",
             () -> new Item(new Item.Properties().food(ModFoods.SPEED_FOOD1)));
 
+    public static final RegistryObject<Item> COOL_SWORD = ITEMS.register("cool_sword",
+            () -> new Item(new Item.Properties().stacksTo(1)));
+
     public static final RegistryObject<Item> TEST_SWORD = ITEMS.register("test_sword",
-            () -> new CustomSword(Tiers.NETHERITE, 996, -3.0F, new Item.Properties()
-                    .durability(2024).rarity(Rarity.RARE).fireResistant()));
+            () -> new CustomSword(ModToolTiers.RUBY, 996, -3.0F, new Item.Properties()
+                    .rarity(Rarity.RARE)));
+
+    public static final RegistryObject<Item> RUBY_SWORD = ITEMS.register("ruby_sword",
+            () -> new SwordItem(ModToolTiers.RUBY, 4, 0, new Item.Properties()));
+    public static final RegistryObject<Item> RUBY_PICKAXE = ITEMS.register("ruby_pickaxe",
+            () -> new PickaxeItem(ModToolTiers.RUBY, 2, 1, new Item.Properties()));
+    public static final RegistryObject<Item> RUBY_AXE = ITEMS.register("ruby_axe",
+            () -> new AxeItem(ModToolTiers.RUBY, 7, -1, new Item.Properties()));
+    public static final RegistryObject<Item> RUBY_SHOVEL = ITEMS.register("ruby_shovel",
+            () -> new ShovelItem(ModToolTiers.RUBY, 1, 2, new Item.Properties()));
+    public static final RegistryObject<Item> RUBY_HOE = ITEMS.register("ruby_hoe",
+            () -> new HoeItem(ModToolTiers.RUBY, 0, 2, new Item.Properties()));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

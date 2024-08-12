@@ -18,7 +18,7 @@ public class ModCreativeModetab {
             DeferredRegister.create(Registries.CREATIVE_MODE_TAB, ProtoMod.MOD_ID);
 
     public static final RegistryObject<CreativeModeTab> CUSTOM_TAB = CREATIVE_MODE_TABS.register("firstprotomod_tab",
-            () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.RUBY.get()))
+            () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.TEST_HEART.get()))
                     .title(Component.translatable("creativetab.firstprotomod_tab"))
                     .displayItems((itemDisplayParameters, output) -> {
                         //Items
@@ -29,6 +29,11 @@ public class ModCreativeModetab {
                         output.accept(ModItems.TEST_SWORD.get());
                         output.accept(ModItems.STRAWBERRY.get());
                         output.accept(ModItems.PINE_CONE.get());
+                        output.accept(ModItems.RUBY_SWORD.get());
+                        output.accept(ModItems.RUBY_PICKAXE.get());
+                        output.accept(ModItems.RUBY_AXE.get());
+                        output.accept(ModItems.RUBY_SHOVEL.get());
+                        output.accept(ModItems.RUBY_HOE.get());
 
                         //Blocks
                         output.accept(Modblocks.RUBY_ORE.get());

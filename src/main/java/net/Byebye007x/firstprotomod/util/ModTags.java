@@ -11,6 +11,9 @@ import net.minecraft.world.level.block.Block;
 public class ModTags {
     public static class Blocks {
         public static final TagKey<Block> VALUABLES = tag("valuable_resource");
+        public static final TagKey<Block> NEEDS_CUSTOM_TOOL = tag("needs_custom_tool");
+
+
 
         private static TagKey<Block> tag(String name) {
             return BlockTags.create(new ResourceLocation(ProtoMod.MOD_ID, name));

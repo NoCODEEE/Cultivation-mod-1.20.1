@@ -1,7 +1,11 @@
-// 1.20.1	2024-08-11T14:16:52.0991067	Tags for minecraft:block mod id firstprotomod
+// 1.20.1	2024-08-12T15:57:57.739561	Tags for minecraft:block mod id firstprotomod
+35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/firstprotomod/tags/blocks/needs_custom_tool.json
 8768c191e8de66ecfa2ddeda65ac06e77e9dbc0b data/firstprotomod/tags/blocks/valuable_resource.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/forge/tags/blocks/needs_netherite_tool.json
+ed7c69a19a015d01b6a0a9d7466781682cb9608d data/minecraft/tags/blocks/fences.json
+69e8a6367be88897462ef839182c88ff6c5e78f7 data/minecraft/tags/blocks/fence_gates.json
 cbd81869c7e40565a499303e8c38c80e78b2e984 data/minecraft/tags/blocks/mineable/pickaxe.json
 fc8a22ecb95373fd68113896cc32faacadedf96d data/minecraft/tags/blocks/needs_diamond_tool.json
 b61caa452255ad1c38e8bc2bc6cbc4806c9da22c data/minecraft/tags/blocks/needs_iron_tool.json
 10da01f625cad5d33a6b73f126d15939e3ae750d data/minecraft/tags/blocks/needs_stone_tool.json
+f74eba70a744332ad020594d7e8e8ec3ed8fc42e data/minecraft/tags/blocks/walls.json
