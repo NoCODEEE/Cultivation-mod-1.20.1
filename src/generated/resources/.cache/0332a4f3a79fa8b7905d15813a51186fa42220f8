@@ -1,4 +1,4 @@
-// 1.20.1	2024-08-11T18:25:35.3893149	Block States: firstprotomod
+// 1.20.1	2024-08-13T22:42:47.3605042	Block States: firstprotomod
 f25e6391587adae168e4b9a663f99cef5b0f85cd assets/firstprotomod/blockstates/raw_ruby_block.json
 7e5c56780f752f24f8d1e987015fe30c6c87aee5 assets/firstprotomod/blockstates/ruby_block.json
 79169c713a1ba55c8638b64c623dbb33e984d638 assets/firstprotomod/blockstates/ruby_button.json
@@ -11,6 +11,7 @@ cf2c98dfb135f000b4910d6d3a603da30f838b18 assets/firstprotomod/blockstates/ruby_s
 1388f66075077e26a07902057ab88a6367c1a40a assets/firstprotomod/blockstates/ruby_stair.json
 804eedd8f5304e19e60c79734b26d1497b2276b4 assets/firstprotomod/blockstates/ruby_trapdoor.json
 2716760af95247446b9cb1c14613eeb7cbff0bde assets/firstprotomod/blockstates/sound_block.json
+75182d224c477a32ddf2e6a1eb71fc032ff33d11 assets/firstprotomod/blockstates/strawberry_crop.json
 a49756398084a6e8284771183cac24383e076957 assets/firstprotomod/models/block/raw_ruby_block.json
 3c52b5a57773f57d9f73a63deacb376d67e12d30 assets/firstprotomod/models/block/ruby_block.json
 c60ac2342815b793948c63890c1906cd8fa036fd assets/firstprotomod/models/block/ruby_button.json
@@ -41,6 +42,12 @@ e6f7ef56d85eeff97549c3340c1fde2e7ad83e33 assets/firstprotomod/models/block/ruby_
 409a54b61d09ac8d2944024d71dde36ea77c88f1 assets/firstprotomod/models/block/ruby_trapdoor_open.json
 2dec779267566d84f48dae8b3745080f7913c610 assets/firstprotomod/models/block/ruby_trapdoor_top.json
 98be19a79c96ac1037eca1c3e6aa3f7213acb26f assets/firstprotomod/models/block/sound_block.json
+6b5c21a4fe166d06ceccf5b561f3eab632ae1aa8 assets/firstprotomod/models/block/strawberry_stage0.json
+eab7f4107e2f4bbc82edd4e9f0730555edc7b8ea assets/firstprotomod/models/block/strawberry_stage1.json
+0e0fe913aed52543b7036a91494218a14feff0c8 assets/firstprotomod/models/block/strawberry_stage2.json
+2ff17c3e829e87f16dc9e43a77d7eaaa1f18e532 assets/firstprotomod/models/block/strawberry_stage3.json
+33c850045640a07c0fa08cfc784e9b73a9219584 assets/firstprotomod/models/block/strawberry_stage4.json
+4d1d61cee299ee99e36cbd1f1bb441ab56eb79f9 assets/firstprotomod/models/block/strawberry_stage5.json
 e0690f8062653e885abd46bb94e339494282eee2 assets/firstprotomod/models/item/raw_ruby_block.json
 d3a03182d7460a6b7e5a2625b8d2f289f11cb5fd assets/firstprotomod/models/item/ruby_block.json
 af68ea7d6c26da98d05981f221cd28d606628bbd assets/firstprotomod/models/item/ruby_ore.json

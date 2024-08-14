@@ -34,6 +34,13 @@ public class ModCreativeModetab {
                         output.accept(ModItems.RUBY_AXE.get());
                         output.accept(ModItems.RUBY_SHOVEL.get());
                         output.accept(ModItems.RUBY_HOE.get());
+                        output.accept(ModItems.RUBY_HELMET.get());
+                        output.accept(ModItems.RUBY_CHESTPLATE.get());
+                        output.accept(ModItems.RUBY_LEGGINGS.get());
+                        output.accept(ModItems.RUBY_BOOTS.get());
+                        output.accept(ModItems.STRAWBERRY_SEEDS.get());
+                        output.accept(ModItems.PLOY_SCYTHE.get());
+                        output.accept(ModItems.RHINO_SPAWN_EGG.get());
 
                         //Blocks
                         output.accept(Modblocks.RUBY_ORE.get());

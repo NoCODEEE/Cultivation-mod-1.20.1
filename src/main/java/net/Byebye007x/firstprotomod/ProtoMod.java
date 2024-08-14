@@ -2,10 +2,17 @@ package net.Byebye007x.firstprotomod;
 
 import com.mojang.logging.LogUtils;
 import net.Byebye007x.firstprotomod.block.Modblocks;
+import net.Byebye007x.firstprotomod.entity.ModEntities;
+import net.Byebye007x.firstprotomod.entity.client.GFRenderer;
+import net.Byebye007x.firstprotomod.entity.client.RhinoRenderer;
 import net.Byebye007x.firstprotomod.item.ModCreativeModetab;
 import net.Byebye007x.firstprotomod.item.ModItems;
+import net.Byebye007x.firstprotomod.loot.ModLootModifiers;
+import net.Byebye007x.firstprotomod.sound.ModSounds;
+import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
@@ -34,6 +41,9 @@ public class ProtoMod
         ModCreativeModetab.register(modEventBus);
         ModItems.register(modEventBus);
         Modblocks.register(modEventBus);
+        ModLootModifiers.register((modEventBus));
+        ModSounds.register(modEventBus);
+        ModEntities.register(modEventBus);
 
         // Register the commonSetup method for mod loading
         modEventBus.addListener(this::commonSetup);
@@ -69,11 +79,11 @@ public class ProtoMod
 
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
     @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
-    public static class ClientModEvents
-    {
+    public static class ClientModEvents {
         @SubscribeEvent
-        public static void onClientSetup(FMLClientSetupEvent event)
-        {
+        public static void onClientSetup(FMLClientSetupEvent event) {
+            EntityRenderers.register(ModEntities.RHINO.get(), RhinoRenderer::new);
+            EntityRenderers.register(ModEntities.GF.get(), GFRenderer::new);
 
         }
     }

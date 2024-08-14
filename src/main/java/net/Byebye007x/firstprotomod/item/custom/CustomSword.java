@@ -1,5 +1,6 @@
 package net.Byebye007x.firstprotomod.item.custom;
 
+import net.Byebye007x.firstprotomod.sound.ModSounds;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -39,8 +40,8 @@ public class CustomSword extends SwordItem {
                 arrow.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
 
                 pLevel.addFreshEntity(arrow);
-                pLevel.playSound(null, pPlayer.getX(), pPlayer.getY(), pPlayer.getZ(),
-                        SoundEvents.ARROW_SHOOT, SoundSource.PLAYERS, 1.0F, 1.0F);
+                pLevel.playSeededSound(null, pPlayer.getX(), pPlayer.getY(), pPlayer.getZ(),
+                        ModSounds.CUSTOM_SWORD_SWING.get(), SoundSource.PLAYERS, 1.0F, 1.0F, 0);
 
 
                 itemstack.hurtAndBreak(1, pPlayer, (p) -> {
@@ -58,7 +59,7 @@ public class CustomSword extends SwordItem {
     @Override
     public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
         // Add a fancy text with color and bold formatting using translatable
-                pTooltipComponents.add(Component.translatable("tooltip.firstprotomod.test_sword.1")
+        pTooltipComponents.add(Component.translatable("tooltip.firstprotomod.test_sword.1")
                 .withStyle(ChatFormatting.GOLD, ChatFormatting.BOLD));
 
         // Add italic text with a custom color using translatable

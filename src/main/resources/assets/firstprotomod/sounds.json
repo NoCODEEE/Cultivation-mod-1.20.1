@@ -1,0 +1,38 @@
+{
+  "custom_sword_swing": {
+    "subtitles": "sounds.firstprotomod.custom_sword_swing",
+    "sounds": [
+      "firstprotomod:custom_sword_swing"
+    ]
+  },
+  "sound_block_break": {
+    "subtitle": "sounds.firstprotomod.sound_block_break",
+    "sounds": [
+      "firstprotomod:sound_block_break"
+    ]
+  },
+  "sound_block_step": {
+    "subtitle": "sounds.firstprotomod.sound_block_step",
+    "sounds": [
+      "firstprotomod:sound_block_step"
+    ]
+  },
+  "sound_block_place": {
+    "subtitle": "sounds.firstprotomod.sound_block_place",
+    "sounds": [
+      "firstprotomod:sound_block_place"
+    ]
+  },
+  "sound_block_hit": {
+    "subtitle": "sounds.firstprotomod.sound_block_hit",
+    "sounds": [
+      "firstprotomod:sound_block_hit"
+    ]
+  },
+  "sound_block_fall": {
+    "subtitle": "sounds.firstprotomod.sound_block_fall",
+    "sounds": [
+      "firstprotomod:sound_block_fall"
+    ]
+  }
+}

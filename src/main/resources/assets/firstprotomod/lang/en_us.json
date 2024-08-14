@@ -10,6 +10,12 @@
   "item.firstprotomod.ruby_axe": "Ruby axe",
   "item.firstprotomod.ruby_shovel": "Ruby shovel",
   "item.firstprotomod.ruby_hoe": "Ruby hoe",
+  "item.firstprotomod.ruby_helmet": "Ruby helmet",
+  "item.firstprotomod.ruby_chestplate": "Ruby chestplate",
+  "item.firstprotomod.ruby_leggings": "Ruby leggings",
+  "item.firstprotomod.ruby_boots": "Ruby boots",
+  "item.firstprotomod.strawberry_seeds": "Strawberry seeds",
+  "item.firstprotomod.ploy_scythe": "Ploy's Scythe",
 
 
   "block.firstprotomod.raw_ruby_block": "Raw ruby block",
@@ -31,6 +37,9 @@
   "tooltip.firstprotomod.test_sword.3": "Shooting arrows up your Ass!",
   "tooltip.firstprotomod.test_sword.4": "Unobtainable",
 
+  "tooltip.firstprotomod.ploy_scythe1": "Art Made By Ploy!",
+  "tooltip.firstprotomod.ploy_scythe2": "Natural strength II",
 
+  "sounds.firstprotomod.custom_sword_swing": "Custom sword swing",
   "creativetab.firstprotomod_tab": "Test mod"
 }
