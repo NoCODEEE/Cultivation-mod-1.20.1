@@ -67,10 +67,10 @@ public class GFModel<T extends Entity> extends HumanoidModel<LivingEntity> {
 
 	@Override
 	public void setupAnim(LivingEntity pEntity, float pLimbSwing, float pLimbSwingAmount, float pAgeInTicks, float pNetHeadYaw, float pHeadPitch) {
-		this.root().getAllParts().forEach(ModelPart::resetPose);
-		this.applyHeadRotation(pNetHeadYaw, pHeadPitch, pAgeInTicks);
-
-		this.animated(((GFEntity) pEntity).idleAnimationState, ModAnimationDefinitionsGf.GF_IDLE, pAgeInTicks);
+//		this.root().getAllParts().forEach(ModelPart::resetPose);
+//		this.applyHeadRotation(pNetHeadYaw, pHeadPitch, pAgeInTicks);
+//
+//		this.animated(((GFEntity) pEntity).idleAnimationState, ModAnimationDefinitionsGf.GF_IDLE, pAgeInTicks);
 	}
 
 	private void applyHeadRotation(float pNetHeadYaw, float pHeadPitch, float pAgeInTicks) {
