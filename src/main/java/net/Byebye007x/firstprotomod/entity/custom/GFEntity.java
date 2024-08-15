@@ -2,6 +2,9 @@ package net.Byebye007x.firstprotomod.entity.custom;
 
 import net.Byebye007x.firstprotomod.entity.ModEntities;
 import net.Byebye007x.firstprotomod.entity.ai.GfAttackGoal;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.contents.TranslatableContents;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -13,14 +16,13 @@ import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
-import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.OwnerHurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.OwnerHurtTargetGoal;
-import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
@@ -33,16 +35,17 @@ public class GFEntity extends TamableAnimal {
             SynchedEntityData.defineId(GFEntity.class, EntityDataSerializers.BYTE);
     protected static final EntityDataAccessor<Optional<UUID>> GF_IS_MINE =
             SynchedEntityData.defineId(GFEntity.class, EntityDataSerializers.OPTIONAL_UUID);
+    private static ItemStack heldItem = ItemStack.EMPTY;
 
     public GFEntity(EntityType<? extends TamableAnimal> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
         this.setTame(false);
     }
 
-//    public final AnimationState idleAnimationState = new AnimationState();
-//    private int idleAnimationTimeout = 0;
-//    public final AnimationState attackAnimationState = new AnimationState();
-//    public int attackAnimationTimeout = 0;
+    public final AnimationState idleAnimationState = new AnimationState();
+    private int idleAnimationTimeout = 0;
+    public final AnimationState attackAnimationState = new AnimationState();
+    public int attackAnimationTimeout = 0;
 
 
 //    @Override
@@ -190,6 +193,49 @@ public class GFEntity extends TamableAnimal {
     }
 
     @Override
+    public InteractionResult interactAt(Player pPlayer, Vec3 pVec, InteractionHand pHand) {
+        ItemStack playerItem = pPlayer.getItemInHand(pHand);
+
+        if (pPlayer.isShiftKeyDown()) {
+            if (!this.level().isClientSide) {
+                if (heldItem.isEmpty() && !playerItem.isEmpty()) {
+                    // Give item to the entity
+                    heldItem = playerItem.copy();
+                    pPlayer.setItemInHand(pHand, ItemStack.EMPTY);
+                    this.setItemSlot(EquipmentSlot.MAINHAND, heldItem); // Update rendering
+                } else if (!heldItem.isEmpty()) {
+                    // Take the item from the entity
+                    pPlayer.addItem(heldItem);
+                    heldItem = ItemStack.EMPTY;
+                    this.setItemSlot(EquipmentSlot.MAINHAND, ItemStack.EMPTY); // Update rendering
+                }
+            }
+            return InteractionResult.SUCCESS;
+        }
+
+        return super.interactAt(pPlayer, pVec, pHand);
+    }
+
+    // Save the entity's held item when saving the entity
+    @Override
+    public void addAdditionalSaveData(CompoundTag pCompound) {
+        super.addAdditionalSaveData(pCompound);
+        if (!heldItem.isEmpty()) {
+            pCompound.put("HeldItem", heldItem.save(new CompoundTag()));
+        }
+    }
+
+    // Load the entity's held item when loading the entity
+    @Override
+    public void readAdditionalSaveData(CompoundTag pCompound) {
+        super.readAdditionalSaveData(pCompound);
+        if (pCompound.contains("HeldItem")) {
+            heldItem = ItemStack.of(pCompound.getCompound("HeldItem"));
+            this.setItemSlot(EquipmentSlot.MAINHAND, heldItem); // Update rendering
+        }
+    }
+
+    @Override
     public InteractionHand getUsedItemHand() {
         return InteractionHand.MAIN_HAND; // Main hand or offhand
     }
@@ -205,12 +251,12 @@ public class GFEntity extends TamableAnimal {
     }
 
     // Ensure the item is visually rendered in the entity's hand
-    @Override
-    public void aiStep() {
-        super.aiStep();
-        if (!this.level().isClientSide && this.tickCount % 20 == 0) {
-            this.setHeldItem(new ItemStack(Items.IRON_SWORD));
-        }
-    }
+//    @Override
+//    public void aiStep() {
+//        super.aiStep();
+//        if (!this.level().isClientSide && this.tickCount % 20 == 0) {
+//            this.setHeldItem(new ItemStack(Items.IRON_SWORD));
+//        }
+//    }
 
 }
