@@ -1,10 +1,12 @@
-// 1.20.1	2024-08-11T14:16:52.1001023	Recipes
+// 1.20.1	2024-08-18T19:28:18.1884094	Recipes
+91d5a22a9e122aecf8b92d5e4f0118b3bc77ddb3 data/firstprotomod/advancements/recipes/combat/ploy_scythe.json
 a9acb690727d4f815489eb99d7df9274156aac3e data/firstprotomod/advancements/recipes/misc/ruby.json
 0eb22e4e1538f64275a56fbab874946304bdd92e data/firstprotomod/advancements/recipes/misc/ruby_block.json
 cac657929b8c6656bc848e2cd9cf4aa290a500bf data/firstprotomod/advancements/recipes/misc/ruby_from_blasting_raw_ruby.json
 7c03a1c5304bbaade9aff4c551ce0ee535223217 data/firstprotomod/advancements/recipes/misc/ruby_from_blasting_ruby_ore.json
 5a0928f47dc3668662aca398c9ebf327ef00f53a data/firstprotomod/advancements/recipes/misc/ruby_from_smelting_raw_ruby.json
 737cf87e074cb3a7a9f884e3508f71f530db9368 data/firstprotomod/advancements/recipes/misc/ruby_from_smelting_ruby_ore.json
+ce2ad1bfc71189eb429f8d4cad4c07fb2b56694e data/firstprotomod/recipes/ploy_scythe.json
 255d31dbba6b4642c95361f830b6e69a00867f57 data/firstprotomod/recipes/ruby.json
 84b9ab796b9d079e332a44c0d88f4ada23001c28 data/firstprotomod/recipes/ruby_block.json
 2716c77294c0659cc6f70baaf5a5b152c8e5b907 data/firstprotomod/recipes/ruby_from_blasting_raw_ruby.json

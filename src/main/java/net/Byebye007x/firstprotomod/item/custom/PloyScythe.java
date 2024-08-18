@@ -3,13 +3,22 @@ package net.Byebye007x.firstprotomod.item.custom;
 import net.Byebye007x.firstprotomod.item.ModItems;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.event.entity.EntityJoinLevelEvent;
+import net.minecraftforge.event.entity.item.ItemTossEvent;
+import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.awt.*;
 import java.util.List;
 
 public class PloyScythe extends SwordItem {
@@ -19,26 +28,35 @@ public class PloyScythe extends SwordItem {
 
     @Override
     public void onInventoryTick(ItemStack stack, Level level, Player player, int slotIndex, int selectedIndex) {
-        ItemStack mainHandItem = player.getMainHandItem();
-        // Get the current Damage Boost effect
-        MobEffectInstance damageBoostEffect = player.getEffect(MobEffects.DAMAGE_BOOST);
+        if (!level.isClientSide()) {
+            boolean isHolding = isHoldingItem(player.getMainHandItem(), ModItems.PLOY_SCYTHE.get()) ||
+                    isHoldingItem(player.getOffhandItem(), ModItems.PLOY_SCYTHE.get());
 
-        // Check if the player has Damage Boost level 2
-        boolean hasDamageBoostLevel2 = damageBoostEffect != null && damageBoostEffect.getAmplifier() == 1 && damageBoostEffect.getDuration() > 10000;
+            MobEffectInstance Effect = player.getEffect(MobEffects.DAMAGE_BOOST);
 
-        if(!level.isClientSide()) {
-            if (isHoldingItem(mainHandItem, ModItems.PLOY_SCYTHE.get())) {
-                if (!hasDamageBoostLevel2) {
-                    player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, Integer.MAX_VALUE, 1,
-                            false, false, true));
+            if (isHolding) {
+                if (Effect == null || Effect.getAmplifier() != 1) {
+                    player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, Integer.MAX_VALUE, 1, false, false, true));
                 }
             } else {
-                if (hasDamageBoostLevel2) {
+                if (Effect != null && Effect.getAmplifier() == 1) {
                     player.removeEffect(MobEffects.DAMAGE_BOOST);
                 }
-
             }
         }
+    }
+
+
+    public boolean hasInHotbar(Player player, Item item) {
+
+            for (int i = 0; i < 9; i++) {
+                ItemStack stack = player.getInventory().getItem(i);
+                if (stack.is(item)) {
+                    return true;
+                }
+            }
+            return false;
+
     }
 
 

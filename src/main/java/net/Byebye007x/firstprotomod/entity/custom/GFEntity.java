@@ -9,8 +9,11 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -21,6 +24,7 @@ import net.minecraft.world.entity.ai.goal.target.OwnerHurtTargetGoal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
@@ -28,13 +32,15 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Optional;
 import java.util.UUID;
 
-public class GFEntity extends TamableAnimal {
+public class GFEntity extends TamableAnimal{
     private static final EntityDataAccessor<Boolean> ATTACKING_GF =
             SynchedEntityData.defineId(GFEntity.class, EntityDataSerializers.BOOLEAN);
     protected static final EntityDataAccessor<Byte> DATA_FLAGS_ID =
             SynchedEntityData.defineId(GFEntity.class, EntityDataSerializers.BYTE);
     protected static final EntityDataAccessor<Optional<UUID>> GF_IS_MINE =
             SynchedEntityData.defineId(GFEntity.class, EntityDataSerializers.OPTIONAL_UUID);
+    private static final EntityDataAccessor<Integer> VARIANT =
+            SynchedEntityData.defineId(GFEntity.class, EntityDataSerializers.INT);
     private static ItemStack heldItem = ItemStack.EMPTY;
 
     public GFEntity(EntityType<? extends TamableAnimal> pEntityType, Level pLevel) {
@@ -104,6 +110,7 @@ public class GFEntity extends TamableAnimal {
         this.entityData.define(ATTACKING_GF, false);
         this.entityData.define(DATA_FLAGS_ID, (byte)0);
         this.entityData.define(GF_IS_MINE, Optional.empty());
+        this.entityData.define(VARIANT, 0);
     }
 
 
@@ -195,14 +202,20 @@ public class GFEntity extends TamableAnimal {
     @Override
     public InteractionResult interactAt(Player pPlayer, Vec3 pVec, InteractionHand pHand) {
         ItemStack playerItem = pPlayer.getItemInHand(pHand);
+        MobEffectInstance damageBoostEffect = pPlayer.getEffect(MobEffects.POISON);
+        boolean hasDamageBoostLevel2 = damageBoostEffect != null && damageBoostEffect.getAmplifier() == 1
+                && damageBoostEffect.getDuration() > 10000;
 
-        if (pPlayer.isShiftKeyDown()) {
+        if (pPlayer.isShiftKeyDown() && this.isOwnedBy(pPlayer)) {
             if (!this.level().isClientSide) {
                 if (heldItem.isEmpty() && !playerItem.isEmpty()) {
                     // Give item to the entity
                     heldItem = playerItem.copy();
                     pPlayer.setItemInHand(pHand, ItemStack.EMPTY);
                     this.setItemSlot(EquipmentSlot.MAINHAND, heldItem); // Update rendering
+                    if (hasDamageBoostLevel2) {
+                        pPlayer.removeEffect(MobEffects.POISON);
+                    }
                 } else if (!heldItem.isEmpty()) {
                     // Take the item from the entity
                     pPlayer.addItem(heldItem);
@@ -214,6 +227,23 @@ public class GFEntity extends TamableAnimal {
         }
 
         return super.interactAt(pPlayer, pVec, pHand);
+    }
+
+    public int getVariant() {
+        return entityData.get(VARIANT);
+    }
+
+    public void setVariant(int variant) {
+        this.entityData.set(VARIANT, variant);
+    }
+
+    @Override
+    public SpawnGroupData finalizeSpawn(ServerLevelAccessor pLevel, DifficultyInstance pDifficulty, MobSpawnType pReason, @Nullable SpawnGroupData pSpawnData, @Nullable CompoundTag pDataTag) {
+        pSpawnData = super.finalizeSpawn(pLevel, pDifficulty, pReason, pSpawnData, pDataTag);
+
+        int variant = this.random.nextInt(7);
+        this.setVariant(variant);
+        return pSpawnData;
     }
 
     // Save the entity's held item when saving the entity

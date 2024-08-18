@@ -2,6 +2,7 @@ package net.Byebye007x.firstprotomod;
 
 import com.mojang.logging.LogUtils;
 import net.Byebye007x.firstprotomod.block.Modblocks;
+import net.Byebye007x.firstprotomod.effect.ModEffects;
 import net.Byebye007x.firstprotomod.entity.ModEntities;
 import net.Byebye007x.firstprotomod.entity.client.GFRenderer;
 import net.Byebye007x.firstprotomod.entity.client.RhinoRenderer;
@@ -10,11 +11,14 @@ import net.Byebye007x.firstprotomod.item.ModItems;
 import net.Byebye007x.firstprotomod.loot.ModLootModifiers;
 import net.Byebye007x.firstprotomod.sound.ModSounds;
 import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
+import net.minecraftforge.event.entity.item.ItemTossEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -44,6 +48,8 @@ public class ProtoMod
         ModLootModifiers.register((modEventBus));
         ModSounds.register(modEventBus);
         ModEntities.register(modEventBus);
+        ModEffects.register(modEventBus);
+
 
         // Register the commonSetup method for mod loading
         modEventBus.addListener(this::commonSetup);
@@ -55,6 +61,7 @@ public class ProtoMod
         modEventBus.addListener(this::addCreative);
 
     }
+
 
     private void commonSetup(final FMLCommonSetupEvent event)
     {

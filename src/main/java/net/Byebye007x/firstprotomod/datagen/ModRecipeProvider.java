@@ -5,6 +5,7 @@ import net.Byebye007x.firstprotomod.block.Modblocks;
 import net.Byebye007x.firstprotomod.item.ModItems;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.ProjectileWeaponItem;
 import net.minecraft.world.item.crafting.AbstractCookingRecipe;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -40,6 +41,20 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.RUBY.get(), 9)
                 .requires(Modblocks.RUBY_BLOCK.get())
                 .unlockedBy(getHasName(Modblocks.RUBY_BLOCK.get()), has(Modblocks.RUBY_BLOCK.get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.PLOY_SCYTHE.get())
+                .pattern("GGG")
+                .pattern(" HD")
+                .pattern("R  ")
+                .define('H', ModItems.TEST_HEART.get())
+                .unlockedBy(getHasName(ModItems.TEST_HEART.get()), has(ModItems.TEST_HEART.get()))
+                .define('G', Items.GOLD_INGOT)
+                .unlockedBy(getHasName(Items.GOLD_INGOT), has(Items.GOLD_INGOT))
+                .define('D', Items.DIAMOND)
+                .unlockedBy(getHasName(Items.DIAMOND), has(Items.DIAMOND))
+                .define('R', ModItems.RUBY.get())
+                .unlockedBy(getHasName(ModItems.RUBY.get()), has(ModItems.RUBY.get()))
                 .save(pWriter);
     }
 

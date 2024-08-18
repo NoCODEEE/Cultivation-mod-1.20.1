@@ -20,14 +20,25 @@ public class ModGlobalLootModifierProvider extends GlobalLootModifierProvider {
 
     @Override
     protected void start() {
+        //Drop from block
         add("pine_cone_from_glass", new AddItemModifier(new LootItemCondition[]{
                 LootItemBlockStatePropertyCondition.hasBlockStateProperties(Blocks.GRASS).build(),
                 LootItemRandomChanceCondition.randomChance(0.3f).build()}, ModItems.PINE_CONE.get()));
+
+        //Drop form mob
+        add("pine_cone_from_creeper", new AddItemModifier(new LootItemCondition[]{
+                new LootTableIdCondition.Builder(new ResourceLocation("entities/creeper")).build(),
+                LootItemRandomChanceCondition.randomChance(0.5f).build() }, ModItems.PINE_CONE.get()));
 
         add("pine_cone_from_creeper", new AddItemModifier(new LootItemCondition[]{
                 new LootTableIdCondition.Builder(new ResourceLocation("entities/creeper")).build(),
                 LootItemRandomChanceCondition.randomChance(0.5f).build() }, ModItems.PINE_CONE.get()));
 
+        add("heart_from_wither", new AddItemModifier(new LootItemCondition[]{
+                new LootTableIdCondition.Builder(new ResourceLocation("entities/wither")).build(),
+                LootItemRandomChanceCondition.randomChance(1.0f).build() }, ModItems.TEST_HEART.get()));
+
+        //Drop in structure
         add("pine_cone_from_desert_pyramid", new AddItemModifier(new LootItemCondition[]{
                 new LootTableIdCondition.Builder(new ResourceLocation("chests/desert_pyramid")).build() }, ModItems.RUBY_SWORD.get()));
 
