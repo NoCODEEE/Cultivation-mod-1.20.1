@@ -1,25 +1,23 @@
 package net.Byebye007x.firstprotomod.datagen;
 
 import net.Byebye007x.firstprotomod.ProtoMod;
-import net.Byebye007x.firstprotomod.block.Modblocks;
+import net.Byebye007x.firstprotomod.block.ModBlocks;
 import net.Byebye007x.firstprotomod.item.ModItems;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.ProjectileWeaponItem;
 import net.minecraft.world.item.crafting.AbstractCookingRecipe;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
-import org.lwjgl.system.macosx.LibSystem;
 
 import java.util.List;
 import java.util.function.Consumer;
 
 public class ModRecipeProvider extends RecipeProvider implements IConditionBuilder {
     private static final List<ItemLike> RUBY_SMELTABLES = List.of(ModItems.RAW_RUBY.get(),
-            Modblocks.RUBY_ORE.get());
+            ModBlocks.RUBY_ORE.get());
 
     public ModRecipeProvider(PackOutput pOutput) {
         super(pOutput);
@@ -30,7 +28,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         oreBlasting(pWriter, RUBY_SMELTABLES, RecipeCategory.MISC, ModItems.RUBY.get(), 0.25f, 100, "ruby");
         oreSmelting(pWriter, RUBY_SMELTABLES, RecipeCategory.MISC, ModItems.RUBY.get(), 0.25f, 200, "ruby");
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Modblocks.RUBY_BLOCK.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.RUBY_BLOCK.get())
                 .pattern("SSS")
                 .pattern("SSS")
                 .pattern("SSS")
@@ -39,8 +37,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(pWriter);
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.RUBY.get(), 9)
-                .requires(Modblocks.RUBY_BLOCK.get())
-                .unlockedBy(getHasName(Modblocks.RUBY_BLOCK.get()), has(Modblocks.RUBY_BLOCK.get()))
+                .requires(ModBlocks.RUBY_BLOCK.get())
+                .unlockedBy(getHasName(ModBlocks.RUBY_BLOCK.get()), has(ModBlocks.RUBY_BLOCK.get()))
                 .save(pWriter);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.PLOY_SCYTHE.get())

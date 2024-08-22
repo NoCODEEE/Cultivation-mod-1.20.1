@@ -1,13 +1,15 @@
 package net.Byebye007x.firstprotomod.item;
 
 import net.Byebye007x.firstprotomod.ProtoMod;
-import net.Byebye007x.firstprotomod.block.Modblocks;
+import net.Byebye007x.firstprotomod.block.ModBlocks;
 import net.Byebye007x.firstprotomod.entity.ModEntities;
-import net.Byebye007x.firstprotomod.item.custom.CustomSword;
+import net.Byebye007x.firstprotomod.item.custom.arrowSword;
 import net.Byebye007x.firstprotomod.item.custom.FuelItem;
 import net.Byebye007x.firstprotomod.item.custom.ModArmorItem;
 import net.Byebye007x.firstprotomod.item.custom.PloyScythe;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -31,7 +33,7 @@ public class ModItems extends Items {
     public static final RegistryObject<Item> STRAWBERRY = ITEMS.register("strawberry",
             () -> new Item(new Item.Properties().food(ModFoods.SPEED_FOOD1)));
     public static final RegistryObject<Item> STRAWBERRY_SEEDS = ITEMS.register("strawberry_seeds",
-            () -> new ItemNameBlockItem(Modblocks.STRAWBERRY_CROP.get(), new Item.Properties()));
+            () -> new ItemNameBlockItem(ModBlocks.STRAWBERRY_CROP.get(), new Item.Properties()));
     public static final RegistryObject<Item> RHINO_SPAWN_EGG = ITEMS.register("rhino_spawn_egg",
             () -> new ForgeSpawnEggItem(ModEntities.RHINO,0x7e9680, 0xc5d1c5, new Item.Properties()));
 
@@ -39,8 +41,14 @@ public class ModItems extends Items {
             () -> new Item(new Item.Properties().stacksTo(1)));
 
     public static final RegistryObject<Item> TEST_SWORD = ITEMS.register("test_sword",
-            () -> new CustomSword(ModToolTiers.RUBY, 996, -3.0F, new Item.Properties()
-                    .rarity(Rarity.RARE)));
+            () -> new arrowSword(ModToolTiers.RUBY, 996, -3.0F, new Item.Properties()
+                    .rarity(Rarity.RARE)) {
+                @Override
+                public void onInventoryTick(ItemStack stack, Level level, Player player, int slotIndex, int selectedIndex) {
+                    super.onInventoryTick(stack, level, player, slotIndex, selectedIndex);
+                    stack.getOrCreateTag().putBoolean("Unbreakable", true);
+                }
+            });
 
     public static final RegistryObject<Item> PLOY_SCYTHE = ITEMS.register("ploy_scythe",
             () -> new PloyScythe(ModToolTiers.RUBY, 15, -1.0F, new Item.Properties()

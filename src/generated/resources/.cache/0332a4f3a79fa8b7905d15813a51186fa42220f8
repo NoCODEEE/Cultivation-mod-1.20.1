@@ -1,4 +1,5 @@
-// 1.20.1	2024-08-13T22:42:47.3605042	Block States: firstprotomod
+// 1.20.1	2024-08-20T22:08:48.3048266	Block States: firstprotomod
+af59e67fac32c90d11a734b699f210c9cf1b3f1a assets/firstprotomod/blockstates/gem_polishing_table.json
 f25e6391587adae168e4b9a663f99cef5b0f85cd assets/firstprotomod/blockstates/raw_ruby_block.json
 7e5c56780f752f24f8d1e987015fe30c6c87aee5 assets/firstprotomod/blockstates/ruby_block.json
 79169c713a1ba55c8638b64c623dbb33e984d638 assets/firstprotomod/blockstates/ruby_button.json
@@ -48,6 +49,7 @@ eab7f4107e2f4bbc82edd4e9f0730555edc7b8ea assets/firstprotomod/models/block/straw
 2ff17c3e829e87f16dc9e43a77d7eaaa1f18e532 assets/firstprotomod/models/block/strawberry_stage3.json
 33c850045640a07c0fa08cfc784e9b73a9219584 assets/firstprotomod/models/block/strawberry_stage4.json
 4d1d61cee299ee99e36cbd1f1bb441ab56eb79f9 assets/firstprotomod/models/block/strawberry_stage5.json
+5b7923924fa0945d7254fcf881188f0291057c3d assets/firstprotomod/models/item/gem_polishing_table.json
 e0690f8062653e885abd46bb94e339494282eee2 assets/firstprotomod/models/item/raw_ruby_block.json
 d3a03182d7460a6b7e5a2625b8d2f289f11cb5fd assets/firstprotomod/models/item/ruby_block.json
 af68ea7d6c26da98d05981f221cd28d606628bbd assets/firstprotomod/models/item/ruby_ore.json

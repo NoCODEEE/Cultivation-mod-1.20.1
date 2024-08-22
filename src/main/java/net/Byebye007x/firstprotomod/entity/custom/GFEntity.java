@@ -246,16 +246,15 @@ public class GFEntity extends TamableAnimal{
         return pSpawnData;
     }
 
-    // Save the entity's held item when saving the entity
     @Override
     public void addAdditionalSaveData(CompoundTag pCompound) {
         super.addAdditionalSaveData(pCompound);
         if (!heldItem.isEmpty()) {
             pCompound.put("HeldItem", heldItem.save(new CompoundTag()));
         }
+        pCompound.putInt("Variant", this.getVariant());
     }
 
-    // Load the entity's held item when loading the entity
     @Override
     public void readAdditionalSaveData(CompoundTag pCompound) {
         super.readAdditionalSaveData(pCompound);
@@ -263,6 +262,7 @@ public class GFEntity extends TamableAnimal{
             heldItem = ItemStack.of(pCompound.getCompound("HeldItem"));
             this.setItemSlot(EquipmentSlot.MAINHAND, heldItem); // Update rendering
         }
+        this.setVariant(pCompound.getInt("Variant"));
     }
 
     @Override

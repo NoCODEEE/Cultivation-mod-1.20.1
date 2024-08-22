@@ -1,11 +1,10 @@
 package net.Byebye007x.firstprotomod.item;
 
 import net.Byebye007x.firstprotomod.ProtoMod;
-import net.Byebye007x.firstprotomod.block.Modblocks;
+import net.Byebye007x.firstprotomod.block.ModBlocks;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -43,10 +42,11 @@ public class ModCreativeModetab {
                         output.accept(ModItems.RHINO_SPAWN_EGG.get());
 
                         //Blocks
-                        output.accept(Modblocks.RUBY_ORE.get());
-                        output.accept(Modblocks.RAW_RUBY_BLOCK.get());
-                        output.accept(Modblocks.RUBY_BLOCK.get());
-                        output.accept(Modblocks.SOUND_BLOCK.get());
+                        output.accept(ModBlocks.RUBY_ORE.get());
+                        output.accept(ModBlocks.RAW_RUBY_BLOCK.get());
+                        output.accept(ModBlocks.RUBY_BLOCK.get());
+                        output.accept(ModBlocks.SOUND_BLOCK.get());
+                        output.accept(ModBlocks.GEM_POLISHING_TABLE.get());
 
 
                     })

@@ -1,12 +1,11 @@
 package net.Byebye007x.firstprotomod.block;
 
 import net.Byebye007x.firstprotomod.ProtoMod;
+import net.Byebye007x.firstprotomod.block.custom.GemPolishingTableBlock;
 import net.Byebye007x.firstprotomod.block.custom.SoundBlock;
 import net.Byebye007x.firstprotomod.block.custom.StrawberryCropBlock;
 import net.Byebye007x.firstprotomod.item.ModItems;
-import net.Byebye007x.firstprotomod.item.ModItems;
 import net.Byebye007x.firstprotomod.sound.ModSounds;
-import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
@@ -15,14 +14,13 @@ import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 import java.util.function.Supplier;
 
-public class Modblocks {
+public class ModBlocks {
     public static final DeferredRegister<Block> BLOCKS =
             DeferredRegister.create(ForgeRegistries.BLOCKS, ProtoMod.MOD_ID);
 
@@ -38,8 +36,12 @@ public class Modblocks {
     public static final RegistryObject<Block> SOUND_BLOCK = registerBlock("sound_block",
             () -> new SoundBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).sound(ModSounds.SOUND_BLOCK_SOUNDS)));
 
+    public static final RegistryObject<Block> GEM_POLISHING_TABLE = registerBlock("gem_polishing_table",
+            () -> new GemPolishingTableBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion()));
+
+
     public static final RegistryObject<Block> RUBY_STAIR = registerBlock("ruby_stair",
-            () -> new StairBlock(() -> Modblocks.RUBY_BLOCK.get().defaultBlockState(),
+            () -> new StairBlock(() -> ModBlocks.RUBY_BLOCK.get().defaultBlockState(),
                     BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).sound(SoundType.AMETHYST)));
     public static final RegistryObject<Block> RUBY_SLAB = registerBlock("ruby_slab",
             () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).sound(SoundType.AMETHYST)));

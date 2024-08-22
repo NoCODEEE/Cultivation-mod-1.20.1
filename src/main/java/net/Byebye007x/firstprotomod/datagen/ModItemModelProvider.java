@@ -1,7 +1,7 @@
 package net.Byebye007x.firstprotomod.datagen;
 
 import net.Byebye007x.firstprotomod.ProtoMod;
-import net.Byebye007x.firstprotomod.block.Modblocks;
+import net.Byebye007x.firstprotomod.block.ModBlocks;
 import net.Byebye007x.firstprotomod.item.ModItems;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceKey;
@@ -15,7 +15,6 @@ import net.minecraft.world.item.armortrim.TrimMaterials;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.client.model.generators.ItemModelBuilder;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
-import net.minecraftforge.client.model.generators.ModelBuilder;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -65,11 +64,11 @@ public class ModItemModelProvider extends ItemModelProvider {
 
         withExistingParent(ModItems.RHINO_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
 
-        normalBlockItem(Modblocks.RUBY_DOOR);
+        normalBlockItem(ModBlocks.RUBY_DOOR);
 
-        fenceItem(Modblocks.RUBY_FENCE, Modblocks.RUBY_BLOCK);
-        buttonItem(Modblocks.RUBY_BUTTON, Modblocks.RUBY_BLOCK);
-        wallItem(Modblocks.RUBY_WALL, Modblocks.RUBY_BLOCK);
+        fenceItem(ModBlocks.RUBY_FENCE, ModBlocks.RUBY_BLOCK);
+        buttonItem(ModBlocks.RUBY_BUTTON, ModBlocks.RUBY_BLOCK);
+        wallItem(ModBlocks.RUBY_WALL, ModBlocks.RUBY_BLOCK);
     }
 
     // normal item
