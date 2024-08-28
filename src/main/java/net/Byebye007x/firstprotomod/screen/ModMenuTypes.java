@@ -1,6 +1,7 @@
 package net.Byebye007x.firstprotomod.screen;
 
 import net.Byebye007x.firstprotomod.ProtoMod;
+import net.minecraft.client.gui.screens.Overlay;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraftforge.common.extensions.IForgeMenuType;
