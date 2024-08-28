@@ -7,9 +7,11 @@ import net.Byebye007x.firstprotomod.effect.ModEffects;
 import net.Byebye007x.firstprotomod.entity.ModEntities;
 import net.Byebye007x.firstprotomod.entity.client.GFRenderer;
 import net.Byebye007x.firstprotomod.entity.client.RhinoRenderer;
+import net.Byebye007x.firstprotomod.entity.client.SwordWaveRenderer;
 import net.Byebye007x.firstprotomod.item.ModCreativeModetab;
 import net.Byebye007x.firstprotomod.item.ModItems;
 import net.Byebye007x.firstprotomod.loot.ModLootModifiers;
+import net.Byebye007x.firstprotomod.particle.ModParticles;
 import net.Byebye007x.firstprotomod.screen.GemPolishingTableScreen;
 import net.Byebye007x.firstprotomod.screen.ModMenuTypes;
 import net.Byebye007x.firstprotomod.sound.ModSounds;
@@ -51,6 +53,7 @@ public class ProtoMod
         ModEffects.register(modEventBus);
         ModBlockEntities.register(modEventBus);
         ModMenuTypes.register(modEventBus);
+        ModParticles.register(modEventBus);
 
 
         // Register the commonSetup method for mod loading
@@ -94,8 +97,10 @@ public class ProtoMod
         public static void onClientSetup(FMLClientSetupEvent event) {
             EntityRenderers.register(ModEntities.RHINO.get(), RhinoRenderer::new);
             EntityRenderers.register(ModEntities.GF.get(), GFRenderer::new);
+            EntityRenderers.register(ModEntities.SWORD_WAVE.get(), SwordWaveRenderer::new);
 
             MenuScreens.register(ModMenuTypes.GEM_POLISHING_MENU.get(), GemPolishingTableScreen::new);
+
 
         }
     }

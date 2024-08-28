@@ -9,4 +9,7 @@ public class ModModelLayers {
             new ResourceLocation(ProtoMod.MOD_ID, "rhino_layer"), "main");
     public static final ModelLayerLocation GF_LAYER = new ModelLayerLocation(
             new ResourceLocation(ProtoMod.MOD_ID, "gf_layer"), "main");
+    public static final ModelLayerLocation SWORD_WAVE_LAYER = new ModelLayerLocation(
+            new ResourceLocation(ProtoMod.MOD_ID, "sword_wave_layer"), "main");
+
 }

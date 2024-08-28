@@ -23,7 +23,7 @@ public class GFRenderer extends MobRenderer<GFEntity, HumanoidModel<GFEntity>> {
             new ResourceLocation(ProtoMod.MOD_ID, "textures/entity/gf/frieren_gf.png"),
             new ResourceLocation(ProtoMod.MOD_ID, "textures/entity/gf/megumin_gf.png"),
             new ResourceLocation(ProtoMod.MOD_ID, "textures/entity/gf/blue_maid_gf.png"),
-            new ResourceLocation(ProtoMod.MOD_ID, "textures/entity/gf/shinokono_gf.png"),
+            new ResourceLocation(ProtoMod.MOD_ID, "textures/entity/gf/shikanokono_gf.png"),
             new ResourceLocation(ProtoMod.MOD_ID, "textures/entity/gf/ganyu_gf.png"),
             new ResourceLocation(ProtoMod.MOD_ID, "textures/entity/gf/purple_flower_gf.png")
     };

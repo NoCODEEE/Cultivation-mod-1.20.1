@@ -73,56 +73,56 @@ public class GFModel<T extends Entity> extends HumanoidModel<LivingEntity> {
 //		this.animated(((GFEntity) pEntity).idleAnimationState, ModAnimationDefinitionsGf.GF_IDLE, pAgeInTicks);
 	}
 
-	private void applyHeadRotation(float pNetHeadYaw, float pHeadPitch, float pAgeInTicks) {
-		pNetHeadYaw = Mth.clamp(pNetHeadYaw, -5.0F, 5.0F);
-		pHeadPitch = Mth.clamp(pHeadPitch, -5.0F, 5.0F);
-
-		this.head.yRot = pNetHeadYaw * ((float)Math.PI / 180F);
-		this.head.xRot = pHeadPitch * ((float)Math.PI / 180F);
-	}
-
-	protected void animated(AnimationState pAnimationState, AnimationDefinition pAnimationDefinition, float pAgeInTicks) {
-		animating(pAnimationState, pAnimationDefinition, pAgeInTicks, 1.0F);
-	}
-
-	protected void animating(AnimationState pAnimationState, AnimationDefinition pAnimationDefinition, float pAgeInTicks, float pSpeed) {
-		pAnimationState.updateTime(pAgeInTicks, pSpeed);
-		pAnimationState.ifStarted((p_233392_) -> {
-			animate(this, pAnimationDefinition, p_233392_.getAccumulatedTime(), 1.0F, ANIMATION_VECTOR_CACHE);
-		});
-	}
-
-
-	public static void animate(GFModel<?> pModel, AnimationDefinition pAnimationDefinition, long pAccumulatedTime, float pScale, Vector3f pAnimationVecCache) {
-		float f = getElapsedSeconds(pAnimationDefinition, pAccumulatedTime);
-
-		for(Map.Entry<String, List<AnimationChannel>> entry : pAnimationDefinition.boneAnimations().entrySet()) {
-			Optional<ModelPart> optional = pModel.getAnyDescendantWithName(entry.getKey());
-			List<AnimationChannel> list = entry.getValue();
-			optional.ifPresent((p_232330_) -> {
-				list.forEach((p_288241_) -> {
-					Keyframe[] akeyframe = p_288241_.keyframes();
-					int i = Math.max(0, Mth.binarySearch(0, akeyframe.length, (p_232315_) -> {
-						return f <= akeyframe[p_232315_].timestamp();
-					}) - 1);
-					int j = Math.min(akeyframe.length - 1, i + 1);
-					Keyframe keyframe = akeyframe[i];
-					Keyframe keyframe1 = akeyframe[j];
-					float f1 = f - keyframe.timestamp();
-					float f2;
-					if (j != i) {
-						f2 = Mth.clamp(f1 / (keyframe1.timestamp() - keyframe.timestamp()), 0.0F, 1.0F);
-					} else {
-						f2 = 0.0F;
-					}
-
-					keyframe1.interpolation().apply(pAnimationVecCache, f2, akeyframe, i, j, pScale);
-					p_288241_.target().apply(p_232330_, pAnimationVecCache);
-				});
-			});
-		}
-
-	}
+//	private void applyHeadRotation(float pNetHeadYaw, float pHeadPitch, float pAgeInTicks) {
+//		pNetHeadYaw = Mth.clamp(pNetHeadYaw, -5.0F, 5.0F);
+//		pHeadPitch = Mth.clamp(pHeadPitch, -5.0F, 5.0F);
+//
+//		this.head.yRot = pNetHeadYaw * ((float)Math.PI / 180F);
+//		this.head.xRot = pHeadPitch * ((float)Math.PI / 180F);
+//	}
+//
+//	protected void animated(AnimationState pAnimationState, AnimationDefinition pAnimationDefinition, float pAgeInTicks) {
+//		animating(pAnimationState, pAnimationDefinition, pAgeInTicks, 1.0F);
+//	}
+//
+//	protected void animating(AnimationState pAnimationState, AnimationDefinition pAnimationDefinition, float pAgeInTicks, float pSpeed) {
+//		pAnimationState.updateTime(pAgeInTicks, pSpeed);
+//		pAnimationState.ifStarted((p_233392_) -> {
+//			animate(this, pAnimationDefinition, p_233392_.getAccumulatedTime(), 1.0F, ANIMATION_VECTOR_CACHE);
+//		});
+//	}
+//
+//
+//	public static void animate(GFModel<?> pModel, AnimationDefinition pAnimationDefinition, long pAccumulatedTime, float pScale, Vector3f pAnimationVecCache) {
+//		float f = getElapsedSeconds(pAnimationDefinition, pAccumulatedTime);
+//
+//		for(Map.Entry<String, List<AnimationChannel>> entry : pAnimationDefinition.boneAnimations().entrySet()) {
+//			Optional<ModelPart> optional = pModel.getAnyDescendantWithName(entry.getKey());
+//			List<AnimationChannel> list = entry.getValue();
+//			optional.ifPresent((p_232330_) -> {
+//				list.forEach((p_288241_) -> {
+//					Keyframe[] akeyframe = p_288241_.keyframes();
+//					int i = Math.max(0, Mth.binarySearch(0, akeyframe.length, (p_232315_) -> {
+//						return f <= akeyframe[p_232315_].timestamp();
+//					}) - 1);
+//					int j = Math.min(akeyframe.length - 1, i + 1);
+//					Keyframe keyframe = akeyframe[i];
+//					Keyframe keyframe1 = akeyframe[j];
+//					float f1 = f - keyframe.timestamp();
+//					float f2;
+//					if (j != i) {
+//						f2 = Mth.clamp(f1 / (keyframe1.timestamp() - keyframe.timestamp()), 0.0F, 1.0F);
+//					} else {
+//						f2 = 0.0F;
+//					}
+//
+//					keyframe1.interpolation().apply(pAnimationVecCache, f2, akeyframe, i, j, pScale);
+//					p_288241_.target().apply(p_232330_, pAnimationVecCache);
+//				});
+//			});
+//		}
+//
+//	}
 	private static float getElapsedSeconds(AnimationDefinition pAnimationDefinition, long pAccumulatedTime) {
 		float f = (float)pAccumulatedTime / 1000.0F;
 		return pAnimationDefinition.looping() ? f % pAnimationDefinition.lengthInSeconds() : f;

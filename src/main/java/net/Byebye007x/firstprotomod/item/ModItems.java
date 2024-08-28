@@ -3,7 +3,7 @@ package net.Byebye007x.firstprotomod.item;
 import net.Byebye007x.firstprotomod.ProtoMod;
 import net.Byebye007x.firstprotomod.block.ModBlocks;
 import net.Byebye007x.firstprotomod.entity.ModEntities;
-import net.Byebye007x.firstprotomod.item.custom.arrowSword;
+import net.Byebye007x.firstprotomod.item.custom.CustomSword;
 import net.Byebye007x.firstprotomod.item.custom.FuelItem;
 import net.Byebye007x.firstprotomod.item.custom.ModArmorItem;
 import net.Byebye007x.firstprotomod.item.custom.PloyScythe;
@@ -41,7 +41,7 @@ public class ModItems extends Items {
             () -> new Item(new Item.Properties().stacksTo(1)));
 
     public static final RegistryObject<Item> TEST_SWORD = ITEMS.register("test_sword",
-            () -> new arrowSword(ModToolTiers.RUBY, 996, -3.0F, new Item.Properties()
+            () -> new CustomSword(ModToolTiers.RUBY, 996, -3.0F, new Item.Properties()
                     .rarity(Rarity.RARE)) {
                 @Override
                 public void onInventoryTick(ItemStack stack, Level level, Player player, int slotIndex, int selectedIndex) {

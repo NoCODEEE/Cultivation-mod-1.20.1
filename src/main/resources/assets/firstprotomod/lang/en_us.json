@@ -40,6 +40,7 @@
 
   "entity.firstprotomod.girlfriend": "Girlfriend",
   "entity.firstprotomod.rhino": "Rhino",
+  "entity.firstprotomod.sword_wave": "Sword Wave",
 
 
   "tooltip.firstprotomod.test_sword.1": "LEGENDARY",
@@ -51,5 +52,6 @@
   "tooltip.firstprotomod.ploy_scythe2": "Natural strength II",
 
   "sounds.firstprotomod.custom_sword_swing": "Custom sword swing",
+
   "creativetab.firstprotomod_tab": "Test mod"
 }

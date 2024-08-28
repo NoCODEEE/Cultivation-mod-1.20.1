@@ -1,7 +1,10 @@
 package net.Byebye007x.firstprotomod.item.custom;
 
+import net.Byebye007x.firstprotomod.entity.custom.SwordWaveEntity;
+import net.Byebye007x.firstprotomod.particle.ModParticles;
 import net.Byebye007x.firstprotomod.sound.ModSounds;
 import net.minecraft.ChatFormatting;
+import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextColor;
@@ -10,28 +13,24 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.AbstractArrow;
-import net.minecraft.world.entity.projectile.Arrow;
-import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
-import java.util.concurrent.ThreadLocalRandom;
 
-public class arrowSword extends SwordItem {
+public class CustomSword extends SwordItem {
     private static final String TAG_TICK_COUNTER = "TickCounter";
     private static final String TAG_SHOTS_REMAINING = "ShotsRemaining";
     private static final int NOT_HOTBAR = 9;
     private static final int DELAY_TICKS = 2;
+//    private static final int TOTAL_SHOTS = ThreadLocalRandom.current().nextInt(1, 5);
+    private static final int TOTAL_SHOTS = 1;
 
 
-    public arrowSword(Tier pTier, int pAttackDamageModifier, float pAttackSpeedModifier, Properties pProperties) {
+    public CustomSword(Tier pTier, int pAttackDamageModifier, float pAttackSpeedModifier, Properties pProperties) {
         super(pTier, pAttackDamageModifier, pAttackSpeedModifier, pProperties);
     }
 
@@ -41,7 +40,6 @@ public class arrowSword extends SwordItem {
         ItemStack itemstack = pPlayer.getItemInHand(pUsedHand);
 
         if (!pLevel.isClientSide) {
-            int TOTAL_SHOTS = ThreadLocalRandom.current().nextInt(1, 5);
 
             for (int i = 0; i <= TOTAL_SHOTS; i++) {
                 CompoundTag tag = itemstack.getOrCreateTag();
@@ -54,12 +52,25 @@ public class arrowSword extends SwordItem {
                         ModSounds.CUSTOM_SWORD_SWING.get(), SoundSource.PLAYERS, 1.0F, 1.0F, 0);
 
 
+        } else {
+            spawnParticles(pLevel, pPlayer, ModParticles.GLITTER_LIGHT.get());
         }
 
         pPlayer.swing(pUsedHand);
         pPlayer.getCooldowns().addCooldown(this, 20); // 1 second cooldown
 
         return new InteractionResultHolder<>(InteractionResult.SUCCESS, itemstack);
+    }
+
+    private void spawnParticles(Level pLevel, Player player, ParticleOptions Particle) {
+        // Parameters: particle type, x, y, z, xSpeed, ySpeed, zSpeed
+        for (int i = 0; i < 10; i++) {
+            pLevel.addParticle(Particle,
+                    player.getX() + (pLevel.random.nextDouble() - 0.5),
+                    player.getY() + 1.5,
+                    player.getZ() + (pLevel.random.nextDouble() - 0.5),
+                    0.0D, 0.1D, 0.0D);
+        }
     }
 
     @Override
@@ -72,7 +83,7 @@ public class arrowSword extends SwordItem {
             if (shotsRemaining > 0) {
                 if (tickCounter <= 0) {
                     // Shoot an arrow
-                    shootArrow(pLevel, (Player) pEntity);
+                    shootEntity(pLevel, (Player) pEntity);
                     tag.putInt(TAG_SHOTS_REMAINING, shotsRemaining - 1);
                     tag.putInt(TAG_TICK_COUNTER, DELAY_TICKS); // Reset the delay counter for the next shot
                 } else {
@@ -85,16 +96,17 @@ public class arrowSword extends SwordItem {
             }
         }
     }
-    public void shootArrow (Level pLevel, Player pPlayer) {
-        Arrow arrow = new Arrow(pLevel, pPlayer);
-        arrow.shootFromRotation(pPlayer, pPlayer.getXRot(), pPlayer.getYRot(), 0.0F, 5.0f, 1.0F);
-        arrow.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
-        pLevel.addFreshEntity(arrow);
+    public void shootEntity(Level pLevel, Player pPlayer) {
+        SwordWaveEntity swordWave = new SwordWaveEntity(pLevel, pPlayer, 0d, 0.0d, 0d);
+        swordWave.setPos(pPlayer.getX(), pPlayer.getEyeY() - 0.3f, pPlayer.getZ());
+        swordWave.setYRot(pPlayer.getYRot());
+        swordWave.setXRot(pPlayer.getXRot());
+        swordWave.shootFromRotation(pPlayer, pPlayer.getXRot(), pPlayer.getYRot(), 0f, 1.5f, 1.0F);
+        pLevel.addFreshEntity(swordWave);
     }
-
+//        arrow.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
 
     public int whereInHotbar(Player player, Item item) {
-
         for (int i = 0; i < 9; i++) {
             ItemStack stack = player.getInventory().getItem(i);
             if (stack.is(item)) {

@@ -15,10 +15,10 @@ public class ModMenuTypes {
             DeferredRegister.create(ForgeRegistries.MENU_TYPES, ProtoMod.MOD_ID);
 
     public static final RegistryObject<MenuType<GemPolishingTableMenu>> GEM_POLISHING_MENU =
-            registerMenuType("gem_polishing_menu", GemPolishingTableMenu::new);
+            registerMenuType(GemPolishingTableMenu::new);
 
-    private static <T extends AbstractContainerMenu>RegistryObject<MenuType<T>> registerMenuType(String name, IContainerFactory<T> factory) {
-        return MENUS.register(name,() -> IForgeMenuType.create(factory));
+    private static <T extends AbstractContainerMenu>RegistryObject<MenuType<T>> registerMenuType(IContainerFactory<T> factory) {
+        return MENUS.register("gem_polishing_menu",() -> IForgeMenuType.create(factory));
     }
 
     public static void register(IEventBus eventBus) {
