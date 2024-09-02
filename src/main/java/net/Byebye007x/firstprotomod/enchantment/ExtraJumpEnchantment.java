@@ -13,7 +13,7 @@ public class ExtraJumpEnchantment extends Enchantment {
         super(pRarity, EnchantmentCategory.ARMOR_FEET, pApplicableSlots);
     }
 
-    public void doExtraJump (LivingEntity pAttacker, Entity pTarget, int pLevel) {
+    public void doExtraJump (LivingEntity pEntity, int pLevel) {
 
     }
 
