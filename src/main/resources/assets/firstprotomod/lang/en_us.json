@@ -18,6 +18,8 @@
   "item.firstprotomod.ploy_scythe": "Ploy's Scythe",
   "item.firstprotomod.rhino_spawn_egg": "Rhino Spawn Egg",
 
+  "enchantment.firstprotomod.lightning_striker": "Lightning Striker",
+
 
   "block.firstprotomod.raw_ruby_block": "Raw ruby block",
   "block.firstprotomod.ruby_block": "Ruby block",
@@ -50,6 +52,9 @@
 
   "tooltip.firstprotomod.ploy_scythe1": "Art Made By Ploy!",
   "tooltip.firstprotomod.ploy_scythe2": "Natural strength II",
+
+  "key.category.firstprotomod.mod": "My mod",
+  "key.firstprotomod.use_magic": "Fire Magic",
 
   "sounds.firstprotomod.custom_sword_swing": "Custom sword swing",
 
