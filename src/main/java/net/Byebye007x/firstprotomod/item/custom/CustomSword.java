@@ -1,5 +1,7 @@
 package net.Byebye007x.firstprotomod.item.custom;
 
+import net.Byebye007x.firstprotomod.enchantment.DashEnchantment;
+import net.Byebye007x.firstprotomod.enchantment.ModEnchantments;
 import net.Byebye007x.firstprotomod.entity.custom.SwordWaveEntity;
 import net.Byebye007x.firstprotomod.particle.ModParticles;
 import net.Byebye007x.firstprotomod.sound.ModSounds;
@@ -9,14 +11,19 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.TextComponentTagVisitor;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextColor;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.MoverType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -39,7 +46,6 @@ public class CustomSword extends SwordItem {
     @Override
     public @NotNull InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, @NotNull InteractionHand pUsedHand) {
         ItemStack itemstack = pPlayer.getItemInHand(pUsedHand);
-
         if (!pLevel.isClientSide) {
 
             for (int i = 0; i <= TOTAL_SHOTS; i++) {
@@ -97,6 +103,16 @@ public class CustomSword extends SwordItem {
             }
         }
     }
+
+    private static void performDash(Player player) {
+
+        Vec3 lookVec = player.getLookAngle();
+        double dashSpeed = 1.5; // Scale speed with enchantment level
+
+        Vec3 dashVec = new Vec3(lookVec.x * dashSpeed, 0.1, lookVec.z * dashSpeed);
+        player.setDeltaMovement(dashVec);
+    }
+
     public void shootEntity(Level pLevel, Player pPlayer) {
         SwordWaveEntity swordWave = new SwordWaveEntity(pLevel, pPlayer, 0d, 0.0d, 0d);
         swordWave.setPos(pPlayer.getX(), pPlayer.getEyeY() - 0.3f, pPlayer.getZ());

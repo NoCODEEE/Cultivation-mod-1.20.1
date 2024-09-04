@@ -2,6 +2,7 @@ package net.Byebye007x.firstprotomod.networking;
 
 import net.Byebye007x.firstprotomod.ProtoMod;
 import net.Byebye007x.firstprotomod.networking.packet.MagicDataSyncC2SPacket;
+import net.Byebye007x.firstprotomod.networking.packet.UseDashEnchantmentC2SPacket;
 import net.Byebye007x.firstprotomod.networking.packet.UseMagicC2SPacket;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
@@ -32,6 +33,12 @@ public class ModPackages {
                 .decoder(UseMagicC2SPacket::new)
                 .encoder(UseMagicC2SPacket::toBytes)
                 .consumerMainThread(UseMagicC2SPacket::handle)
+                .add();
+
+        net.messageBuilder(UseDashEnchantmentC2SPacket.class, id(), NetworkDirection.PLAY_TO_SERVER)
+                .decoder(UseDashEnchantmentC2SPacket::new)
+                .encoder(UseDashEnchantmentC2SPacket::toBytes)
+                .consumerMainThread(UseDashEnchantmentC2SPacket::handle)
                 .add();
 
         net.messageBuilder(MagicDataSyncC2SPacket.class, id(), NetworkDirection.PLAY_TO_CLIENT)

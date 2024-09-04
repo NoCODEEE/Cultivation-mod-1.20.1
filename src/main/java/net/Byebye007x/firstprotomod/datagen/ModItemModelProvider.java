@@ -51,6 +51,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         normalItem(ModItems.STRAWBERRY);
         normalItem(ModItems.STRAWBERRY_SEEDS);
         normalItem(ModItems.TEST_HEART);
+        normalItem(ModItems.MAGIC_FRUIT);
         handHeldItem(ModItems.RUBY_SWORD);
         handHeldItem(ModItems.RUBY_PICKAXE);
         handHeldItem(ModItems.RUBY_AXE);

@@ -7,4 +7,7 @@ import net.minecraft.world.food.FoodProperties;
 public class ModFoods {
     public static final FoodProperties SPEED_FOOD1 = new FoodProperties.Builder().nutrition(2).fast()
             .saturationMod(0.2f).effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 400, 1), 1.0f).build();
+
+    public static final FoodProperties MAGIC_FRUIT = new FoodProperties.Builder().nutrition(5).
+            saturationMod(1f).build();
 }

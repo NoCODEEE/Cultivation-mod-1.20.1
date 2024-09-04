@@ -17,6 +17,10 @@ public class ModEnchantments {
             ENCHANTMENTS.register("lightning_striker",
                     () -> new LightningStrikerEnchantment(Enchantment.Rarity.UNCOMMON,
                             EnchantmentCategory.WEAPON, EquipmentSlot.MAINHAND));
+    public static RegistryObject<Enchantment> DASH =
+            ENCHANTMENTS.register("dash",
+                    () -> new DashEnchantment(Enchantment.Rarity.UNCOMMON,
+                            EquipmentSlot.MAINHAND));
 
     public static void register(IEventBus eventBus) {
         ENCHANTMENTS.register(eventBus);

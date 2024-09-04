@@ -3,10 +3,7 @@ package net.Byebye007x.firstprotomod.item;
 import net.Byebye007x.firstprotomod.ProtoMod;
 import net.Byebye007x.firstprotomod.block.ModBlocks;
 import net.Byebye007x.firstprotomod.entity.ModEntities;
-import net.Byebye007x.firstprotomod.item.custom.CustomSword;
-import net.Byebye007x.firstprotomod.item.custom.FuelItem;
-import net.Byebye007x.firstprotomod.item.custom.ModArmorItem;
-import net.Byebye007x.firstprotomod.item.custom.PloyScythe;
+import net.Byebye007x.firstprotomod.item.custom.*;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
@@ -29,6 +26,9 @@ public class ModItems extends Items {
 
     public static final RegistryObject<Item> TEST_HEART = ITEMS.register("test_heart",
             () -> new FuelItem(new Item.Properties().food(ModFoods.SPEED_FOOD1), 800));
+
+    public static final RegistryObject<Item> MAGIC_FRUIT = ITEMS.register("magic_fruit",
+            () -> new MagicFood(new Item.Properties().food(ModFoods.MAGIC_FRUIT)));
 
     public static final RegistryObject<Item> STRAWBERRY = ITEMS.register("strawberry",
             () -> new Item(new Item.Properties().food(ModFoods.SPEED_FOOD1)));

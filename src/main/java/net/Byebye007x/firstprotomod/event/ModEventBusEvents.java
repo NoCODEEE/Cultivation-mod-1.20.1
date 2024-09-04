@@ -1,6 +1,7 @@
 package net.Byebye007x.firstprotomod.event;
 
 import net.Byebye007x.firstprotomod.ProtoMod;
+import net.Byebye007x.firstprotomod.enchantment.DashEnchantment;
 import net.Byebye007x.firstprotomod.entity.ModEntities;
 import net.Byebye007x.firstprotomod.entity.custom.GFEntity;
 import net.Byebye007x.firstprotomod.entity.custom.RhinoEntity;
@@ -8,13 +9,19 @@ import net.Byebye007x.firstprotomod.magic.PlayerMagic;
 import net.Byebye007x.firstprotomod.magic.PlayerMagicProvider;
 import net.Byebye007x.firstprotomod.networking.ModPackages;
 import net.Byebye007x.firstprotomod.networking.packet.MagicDataSyncC2SPacket;
+import net.Byebye007x.firstprotomod.networking.packet.UseDashEnchantmentC2SPacket;
+import net.Byebye007x.firstprotomod.networking.packet.UseMagicC2SPacket;
 import net.Byebye007x.firstprotomod.particle.ModParticles;
 import net.Byebye007x.firstprotomod.particle.custom.GlitterLightParticle;
+import net.Byebye007x.firstprotomod.util.KeyBinding;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.components.ChatComponent;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
@@ -26,7 +33,6 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.LogicalSide;
 import net.minecraftforge.fml.common.Mod;
 
-@Mod.EventBusSubscriber(modid = ProtoMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModEventBusEvents {
 
     @Mod.EventBusSubscriber(modid = ProtoMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
@@ -115,6 +121,18 @@ public class ModEventBusEvents {
                     });
                 }
             }
+        }
+
+        @SubscribeEvent
+        public static void onKeyInput(InputEvent.Key event) {
+            Player player = Minecraft.getInstance().player;
+            if (KeyBinding.USE_DASH.consumeClick()) {
+                if (DashEnchantment.canDash(player)) {
+                    DashEnchantment.doDash(player, DashEnchantment.getExistingLevel(player));
+                    ModPackages.sendToServer(new UseDashEnchantmentC2SPacket());
+                }
+            }
+
         }
 
 
