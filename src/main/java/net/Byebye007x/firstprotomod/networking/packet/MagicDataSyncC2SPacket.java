@@ -1,7 +1,10 @@
 package net.Byebye007x.firstprotomod.networking.packet;
 
 import net.Byebye007x.firstprotomod.client.ClientMpData;
+import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.network.NetworkEvent;
 
 import java.util.function.Supplier;
@@ -34,7 +37,8 @@ public class MagicDataSyncC2SPacket {
         context.enqueueWork(() -> {
             // ON the client
 //            System.out.println("MP: " + MP + " / " + MAX_MP + " / " + MP_REGEN + "\n");
-            ClientMpData.setPlayerMp(MP, MAX_MP, MP_REGEN);
+                ClientMpData.setPlayerMp(MP, MAX_MP, MP_REGEN);
+
 
         });
         return true;

@@ -68,12 +68,20 @@ public class ModItems extends Items {
     public static final RegistryObject<Item> RUBY_HELMET = ITEMS.register("ruby_helmet",
             () -> new ArmorItem(ModArmorMaterials.RUBY, ArmorItem.Type.HELMET, new Item.Properties()));
     public static final RegistryObject<Item> RUBY_CHESTPLATE = ITEMS.register("ruby_chestplate",
-            () -> new ModArmorItem(ModArmorMaterials.RUBY, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
+            () -> new GiveEffectArmorItem(ModArmorMaterials.RUBY, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
     public static final RegistryObject<Item> RUBY_LEGGINGS = ITEMS.register("ruby_leggings",
             () -> new ArmorItem(ModArmorMaterials.RUBY, ArmorItem.Type.LEGGINGS, new Item.Properties()));
     public static final RegistryObject<Item> RUBY_BOOTS = ITEMS.register("ruby_boots",
             () -> new ArmorItem(ModArmorMaterials.RUBY, ArmorItem.Type.BOOTS, new Item.Properties()));
 
+    public static final RegistryObject<Item> MAGIC_HELM = ITEMS.register("magic_helm",
+            () -> new MagicArmorItem(ModArmorMaterials.MAGIC_CLOTH, ArmorItem.Type.HELMET, new Item.Properties()));
+    public static final RegistryObject<Item> MAGIC_ROBE = ITEMS.register("magic_robe",
+            () -> new MagicArmorItem(ModArmorMaterials.MAGIC_CLOTH, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
+    public static final RegistryObject<Item> MAGIC_PANTS = ITEMS.register("magic_pants",
+            () -> new MagicArmorItem(ModArmorMaterials.MAGIC_CLOTH, ArmorItem.Type.LEGGINGS, new Item.Properties()));
+    public static final RegistryObject<Item> MAGIC_BOOTS = ITEMS.register("magic_boots",
+            () -> new MagicArmorItem(ModArmorMaterials.MAGIC_CLOTH, ArmorItem.Type.BOOTS, new Item.Properties()));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

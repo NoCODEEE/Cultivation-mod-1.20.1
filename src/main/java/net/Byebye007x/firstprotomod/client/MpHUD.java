@@ -33,8 +33,13 @@ public class MpHUD {
         }
     }
 
+    public static final IGuiOverlay MP_VALUE = ((gui, guiGraphics, partialTick, screenWidth, screenHeight) -> {
+        String mp = (int) ClientMpData.getPlayerMp() + "/" + (int) ClientMpData.getPlayerMaxMp();
+        guiGraphics.drawString(Minecraft.getInstance().font, mp, 1, 30, 0xFFFFFF);
+    });
+
     public static final IGuiOverlay CUSTOM_MP_BAR = ((gui, guiGraphics, partialTick, screenWidth, screenHeight) -> {
-        int x = 5;
+        int x = 15;
         int y = 25;
         float scale = 0.5f;
 

@@ -41,6 +41,10 @@ public class ModCreativeModetab {
                         output.accept(ModItems.PLOY_SCYTHE.get());
                         output.accept(ModItems.RHINO_SPAWN_EGG.get());
                         output.accept(ModItems.MAGIC_FRUIT.get());
+                        output.accept(ModItems.MAGIC_HELM.get());
+                        output.accept(ModItems.MAGIC_ROBE.get());
+                        output.accept(ModItems.MAGIC_PANTS.get());
+                        output.accept(ModItems.MAGIC_BOOTS.get());
 
                         //Blocks
                         output.accept(ModBlocks.RUBY_ORE.get());

@@ -4,7 +4,12 @@ package net.Byebye007x.firstprotomod.client;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.Byebye007x.firstprotomod.ProtoMod;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.Font;
+import net.minecraft.client.gui.Gui;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.renderer.GameRenderer;
+import net.minecraft.client.renderer.entity.ItemRenderer;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.api.distmarker.Dist;
@@ -17,10 +22,11 @@ import net.minecraftforge.fml.common.Mod;
 
 
 @Mod.EventBusSubscriber(modid = ProtoMod.MOD_ID, value = Dist.CLIENT)
-public class CustomHealthHUD {
+public class CustomHealthHUD{
 
     private static final ResourceLocation HEALTH_BAR =
             new ResourceLocation(ProtoMod.MOD_ID, "textures/gui/hud/health_bar.png");
+
 
     @SubscribeEvent
     public static void stopVanillaHealthOverlay(RenderGuiOverlayEvent.Pre event) {
@@ -41,8 +47,15 @@ public class CustomHealthHUD {
         }
     }
 
+
+    public static final IGuiOverlay HEALTH_VALUE = ((gui, guiGraphics, partialTick, screenWidth1, screenHeight1) -> {
+        String health = (int) Minecraft.getInstance().player.getHealth() + "/" + (int) Minecraft.getInstance().player.getMaxHealth();
+        guiGraphics.drawString(Minecraft.getInstance().font, health, 1, 10, 0xFFFFFF);
+    });
+
+
     public static final IGuiOverlay CUSTOM_HEALTH_BAR = ((gui, guiGraphics, partialTick, screenWidth, screenHeight) -> {
-        int x = 5;
+        int x = 15;
         int y = 5;
         float scale = 0.5f;
 

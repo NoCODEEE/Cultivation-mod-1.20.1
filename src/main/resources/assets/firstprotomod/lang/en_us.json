@@ -18,9 +18,14 @@
   "item.firstprotomod.ploy_scythe": "Ploy's Scythe",
   "item.firstprotomod.rhino_spawn_egg": "Rhino Spawn Egg",
   "item.firstprotomod.magic_fruit": "Magic Fruit",
+  "item.firstprotomod.magic_robe": "Magic Robe",
+  "item.firstprotomod.magic_helm": "Magic Helm",
+  "item.firstprotomod.magic_pants": "Magic Pants",
+  "item.firstprotomod.magic_boots": "Magic Boots",
 
   "enchantment.firstprotomod.lightning_striker": "Lightning Striker",
   "enchantment.firstprotomod.dash": "Dash",
+  "enchantment.firstprotomod.cloud_step": "Cloud Step",
 
 
   "block.firstprotomod.raw_ruby_block": "Raw ruby block",
@@ -57,6 +62,8 @@
 
   "key.category.firstprotomod.mod": "My mod",
   "key.firstprotomod.use_magic": "Fire Magic",
+  "key.firstprotomod.use_dash": "Dash Enchantment",
+  "key.firstprotomod.use_cloud_step": "Cloud Step Enchantment",
 
   "sounds.firstprotomod.custom_sword_swing": "Custom sword swing",
 

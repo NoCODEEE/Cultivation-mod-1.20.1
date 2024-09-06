@@ -1,7 +1,11 @@
 package net.Byebye007x.firstprotomod.magic;
 
+import net.Byebye007x.firstprotomod.networking.ModPackages;
+import net.Byebye007x.firstprotomod.networking.packet.MagicDataSyncC2SPacket;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.common.capabilities.CapabilityToken;
@@ -25,6 +29,7 @@ public class PlayerMagicProvider implements ICapabilityProvider, INBTSerializabl
 
         return this.mp;
     }
+
 
     @Override
     public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {

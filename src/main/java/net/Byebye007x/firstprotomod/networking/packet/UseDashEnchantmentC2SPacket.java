@@ -45,12 +45,11 @@ public class UseDashEnchantmentC2SPacket {
             //Use Dash
             player.getCapability(PlayerMagicProvider.PLAYER_MP).ifPresent(playerMagic -> {
                 if (playerMagic.getMp() > 0) {
-                    if (DashEnchantment.canDash(player)) {
+                    if (!player.isCreative()) {
                         playerMagic.subMp(1);
-                        level.playSeededSound(null, player.getX(), player.getY(), player.getZ(),
-                                SoundEvents.SAND_STEP, SoundSource.PLAYERS, 1.0F, 1.0F, 0);
                     }
-
+                    level.playSeededSound(null, player.getX(), player.getY(), player.getZ(),
+                            SoundEvents.SAND_STEP, SoundSource.PLAYERS, 1.0F, 1.0F, 0);
 
                 } else {
                     player.displayClientMessage(Component.literal("Not enough Mp"), true);

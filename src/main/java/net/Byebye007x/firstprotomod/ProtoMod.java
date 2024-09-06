@@ -35,6 +35,8 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
+import software.bernie.geckolib.GeckoLib;
+import software.bernie.geckolib.renderer.GeoArmorRenderer;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(ProtoMod.MOD_ID)
@@ -61,6 +63,8 @@ public class ProtoMod
         ModMenuTypes.register(modEventBus);
         ModParticles.register(modEventBus);
         ModEnchantments.register(modEventBus);
+
+        GeckoLib.initialize();
 
 
         // Register the commonSetup method for mod loading
@@ -107,7 +111,6 @@ public class ProtoMod
             EntityRenderers.register(ModEntities.SWORD_WAVE.get(), SwordWaveRenderer::new);
 
             MenuScreens.register(ModMenuTypes.GEM_POLISHING_MENU.get(), GemPolishingTableScreen::new);
-
 
         }
 

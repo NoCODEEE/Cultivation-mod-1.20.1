@@ -2,7 +2,6 @@ package net.Byebye007x.firstprotomod.item.custom;
 
 import com.google.common.collect.ImmutableMap;
 import net.Byebye007x.firstprotomod.item.ModArmorMaterials;
-import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -13,15 +12,15 @@ import net.minecraft.world.level.Level;
 import java.util.List;
 import java.util.Map;
 
-public class ModArmorItem extends ArmorItem {
+public class GiveEffectArmorItem extends ArmorItem {
     private static final Map<ArmorMaterial, List<MobEffectInstance>> MATERIAL_TO_EFFECT_MAP =
             (new ImmutableMap.Builder<ArmorMaterial, List<MobEffectInstance>>())
                     .put(ModArmorMaterials.RUBY, List.of(
-                            new MobEffectInstance(MobEffects.NIGHT_VISION, 100000000, 1, false, false, true),
+                            new MobEffectInstance(MobEffects.NIGHT_VISION, Integer.MAX_VALUE, 1, false, false, true),
                             new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 200, 1, false, false, true)
                     )).build();
 
-    public ModArmorItem(ArmorMaterial pMaterial, Type pType, Properties pProperties) {
+    public GiveEffectArmorItem(ArmorMaterial pMaterial, Type pType, Properties pProperties) {
         super(pMaterial, pType, pProperties);
     }
 

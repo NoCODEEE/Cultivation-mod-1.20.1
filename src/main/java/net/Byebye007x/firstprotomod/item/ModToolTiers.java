@@ -16,4 +16,8 @@ public class ModToolTiers {
             new ForgeTier(5, 2000, 10f, 4f, 25,
                     ModTags.Blocks.NEEDS_CUSTOM_TOOL, () -> Ingredient.of(ModItems.RUBY.get())),
             new ResourceLocation(ProtoMod.MOD_ID, "ruby"), List.of(Tiers.NETHERITE), List.of());
+    public static final Tier MAGIC_CLOTH = TierSortingRegistry.registerTier(
+            new ForgeTier(5, 50, 10f, 4f, 25,
+                    ModTags.Blocks.NEEDS_CUSTOM_TOOL, () -> Ingredient.of(ModItems.TEST_HEART.get())),
+            new ResourceLocation(ProtoMod.MOD_ID, "cloth"), List.of(Tiers.NETHERITE), List.of());
 }

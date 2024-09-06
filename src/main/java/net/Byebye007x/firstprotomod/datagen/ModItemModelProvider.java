@@ -52,12 +52,19 @@ public class ModItemModelProvider extends ItemModelProvider {
         normalItem(ModItems.STRAWBERRY_SEEDS);
         normalItem(ModItems.TEST_HEART);
         normalItem(ModItems.MAGIC_FRUIT);
+        normalItem(ModItems.MAGIC_HELM);
+        normalItem(ModItems.MAGIC_ROBE);
+        normalItem(ModItems.MAGIC_PANTS);
+        normalItem(ModItems.MAGIC_BOOTS);
+
         handHeldItem(ModItems.RUBY_SWORD);
         handHeldItem(ModItems.RUBY_PICKAXE);
         handHeldItem(ModItems.RUBY_AXE);
         handHeldItem(ModItems.RUBY_SHOVEL);
         handHeldItem(ModItems.RUBY_HOE);
+
         ployScythe(ModItems.PLOY_SCYTHE);
+
         trimmedArmorItem(ModItems.RUBY_HELMET);
         trimmedArmorItem(ModItems.RUBY_CHESTPLATE);
         trimmedArmorItem(ModItems.RUBY_LEGGINGS);

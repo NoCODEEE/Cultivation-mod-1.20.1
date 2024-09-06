@@ -20,7 +20,11 @@ public class ModEnchantments {
     public static RegistryObject<Enchantment> DASH =
             ENCHANTMENTS.register("dash",
                     () -> new DashEnchantment(Enchantment.Rarity.UNCOMMON,
-                            EquipmentSlot.MAINHAND));
+                            EquipmentSlot.FEET));
+    public static RegistryObject<Enchantment> CLOUD_STEP =
+            ENCHANTMENTS.register("cloud_step",
+                    () -> new CloudStepEnchantment(Enchantment.Rarity.UNCOMMON,
+                            EquipmentSlot.FEET));
 
     public static void register(IEventBus eventBus) {
         ENCHANTMENTS.register(eventBus);

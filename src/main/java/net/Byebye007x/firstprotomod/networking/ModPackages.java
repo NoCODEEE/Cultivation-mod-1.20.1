@@ -1,9 +1,7 @@
 package net.Byebye007x.firstprotomod.networking;
 
 import net.Byebye007x.firstprotomod.ProtoMod;
-import net.Byebye007x.firstprotomod.networking.packet.MagicDataSyncC2SPacket;
-import net.Byebye007x.firstprotomod.networking.packet.UseDashEnchantmentC2SPacket;
-import net.Byebye007x.firstprotomod.networking.packet.UseMagicC2SPacket;
+import net.Byebye007x.firstprotomod.networking.packet.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.network.NetworkDirection;
@@ -39,6 +37,18 @@ public class ModPackages {
                 .decoder(UseDashEnchantmentC2SPacket::new)
                 .encoder(UseDashEnchantmentC2SPacket::toBytes)
                 .consumerMainThread(UseDashEnchantmentC2SPacket::handle)
+                .add();
+
+        net.messageBuilder(UseCloudStepEnchantmentC2SPacket.class, id(), NetworkDirection.PLAY_TO_SERVER)
+                .decoder(UseCloudStepEnchantmentC2SPacket::new)
+                .encoder(UseCloudStepEnchantmentC2SPacket::toBytes)
+                .consumerMainThread(UseCloudStepEnchantmentC2SPacket::handle)
+                .add();
+
+        net.messageBuilder(CultivateC2SPacket.class, id(), NetworkDirection.PLAY_TO_SERVER)
+                .decoder(CultivateC2SPacket::new)
+                .encoder(CultivateC2SPacket::toBytes)
+                .consumerMainThread(CultivateC2SPacket::handle)
                 .add();
 
         net.messageBuilder(MagicDataSyncC2SPacket.class, id(), NetworkDirection.PLAY_TO_CLIENT)
