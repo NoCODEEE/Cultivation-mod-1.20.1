@@ -64,6 +64,7 @@
   "key.firstprotomod.use_magic": "Fire Magic",
   "key.firstprotomod.use_dash": "Dash Enchantment",
   "key.firstprotomod.use_cloud_step": "Cloud Step Enchantment",
+  "key.firstprotomod.render_white_border": "Render White Border",
 
   "sounds.firstprotomod.custom_sword_swing": "Custom sword swing",
 

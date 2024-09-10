@@ -3,24 +3,21 @@ package net.Byebye007x.firstprotomod.event;
 import net.Byebye007x.firstprotomod.ProtoMod;
 import net.Byebye007x.firstprotomod.client.CustomHealthHUD;
 import net.Byebye007x.firstprotomod.client.MpHUD;
-import net.Byebye007x.firstprotomod.effect.ModEffects;
 import net.Byebye007x.firstprotomod.enchantment.CloudStepEnchantment;
 import net.Byebye007x.firstprotomod.enchantment.DashEnchantment;
 import net.Byebye007x.firstprotomod.entity.client.GFModel;
 import net.Byebye007x.firstprotomod.entity.client.ModModelLayers;
 import net.Byebye007x.firstprotomod.entity.client.RhinoModel;
 import net.Byebye007x.firstprotomod.entity.client.SwordWaveModel;
-import net.Byebye007x.firstprotomod.magic.PlayerMagicProvider;
 import net.Byebye007x.firstprotomod.networking.ModPackages;
-import net.Byebye007x.firstprotomod.networking.packet.CultivateC2SPacket;
 import net.Byebye007x.firstprotomod.networking.packet.UseCloudStepEnchantmentC2SPacket;
 import net.Byebye007x.firstprotomod.networking.packet.UseDashEnchantmentC2SPacket;
 import net.Byebye007x.firstprotomod.networking.packet.UseMagicC2SPacket;
+import net.Byebye007x.firstprotomod.renderer.BlockWhiteBorder;
 import net.Byebye007x.firstprotomod.util.KeyBinding;
 import net.Byebye007x.firstprotomod.util.ToggleHandler;
 import net.minecraft.client.Minecraft;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.api.distmarker.Dist;
@@ -57,6 +54,7 @@ public class ModEventBusClientEvents {
             event.register(KeyBinding.USE_DASH);
             event.register(KeyBinding.USE_CLOUD_STEP);
             event.register(KeyBinding.CULTIVATING);
+            event.register(KeyBinding.WHITE_BORDER);
 
         }
 
@@ -95,6 +93,27 @@ public class ModEventBusClientEvents {
                     player.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(0.1);
                 }
                 System.out.println(ToggleHandler.isCultivating());
+            }
+
+            if (KeyBinding.WHITE_BORDER.consumeClick()) {
+                ToggleHandler.changeAltState();
+            }
+        }
+
+//        private static int tick = 0;
+//        @SubscribeEvent
+//        public static void onPlayerTick (TickEvent.PlayerTickEvent event) {
+//            if (event.side == LogicalSide.CLIENT) {
+//                tick++;
+//            }
+//            if (tick == 80) tick = 0;
+//        }
+
+        @SubscribeEvent
+        public static void onRenderWorldLast(RenderLevelStageEvent event) {
+            if (ToggleHandler.isAlt()) {
+                BlockWhiteBorder.renderBlockOutline(event.getPoseStack());
+                Minecraft.getInstance().renderBuffers().bufferSource().endBatch(RenderType.lines());
             }
         }
 
