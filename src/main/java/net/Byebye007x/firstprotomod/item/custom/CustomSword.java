@@ -104,15 +104,6 @@ public class CustomSword extends SwordItem {
         }
     }
 
-    private static void performDash(Player player) {
-
-        Vec3 lookVec = player.getLookAngle();
-        double dashSpeed = 1.5; // Scale speed with enchantment level
-
-        Vec3 dashVec = new Vec3(lookVec.x * dashSpeed, 0.1, lookVec.z * dashSpeed);
-        player.setDeltaMovement(dashVec);
-    }
-
     public void shootEntity(Level pLevel, Player pPlayer) {
         SwordWaveEntity swordWave = new SwordWaveEntity(pLevel, pPlayer, 0d, 0.0d, 0d);
         swordWave.setPos(pPlayer.getX(), pPlayer.getEyeY() - 0.3f, pPlayer.getZ());

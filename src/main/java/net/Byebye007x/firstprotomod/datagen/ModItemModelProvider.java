@@ -56,12 +56,14 @@ public class ModItemModelProvider extends ItemModelProvider {
         normalItem(ModItems.MAGIC_ROBE);
         normalItem(ModItems.MAGIC_PANTS);
         normalItem(ModItems.MAGIC_BOOTS);
+        normalItem(ModItems.RAINBOW_ORB);
 
         handHeldItem(ModItems.RUBY_SWORD);
         handHeldItem(ModItems.RUBY_PICKAXE);
         handHeldItem(ModItems.RUBY_AXE);
         handHeldItem(ModItems.RUBY_SHOVEL);
         handHeldItem(ModItems.RUBY_HOE);
+        handHeldItem(ModItems.SACRED_SWORD);
 
         ployScythe(ModItems.PLOY_SCYTHE);
 

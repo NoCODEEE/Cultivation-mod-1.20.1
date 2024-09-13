@@ -1,7 +1,7 @@
 package net.Byebye007x.firstprotomod.block.entity;
 
 import net.Byebye007x.firstprotomod.item.ModItems;
-import net.Byebye007x.firstprotomod.screen.GemPolishingTableMenu;
+import net.Byebye007x.firstprotomod.screen.GemPolishingTable.GemPolishingTableMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;

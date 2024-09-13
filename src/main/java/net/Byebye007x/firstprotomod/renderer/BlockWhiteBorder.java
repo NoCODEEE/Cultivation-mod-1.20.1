@@ -5,10 +5,13 @@ import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.LevelRenderer;
+import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.ClipContext;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
@@ -18,7 +21,7 @@ public class BlockWhiteBorder {
 
     public static void renderBlockOutline(PoseStack poseStack) {
         Minecraft mc = Minecraft.getInstance();
-        Entity player = mc.player;
+        Player player = mc.player;
         if (player == null) return;
 
         // Get the player's eye position and view vector
@@ -32,6 +35,7 @@ public class BlockWhiteBorder {
         BlockHitResult traceResult = mc.level.clip(new ClipContext(
                 eyePosition, targetVector, ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, player));
 
+
         // If we hit a block, render the outline around it
         if (traceResult.getType() == HitResult.Type.BLOCK) {
             BlockPos blockPos = traceResult.getBlockPos();
@@ -39,25 +43,28 @@ public class BlockWhiteBorder {
         }
     }
 
-    private static void drawWhiteOutlineAroundBlock(Minecraft mc, PoseStack poseStack, BlockPos blockPos) {
-        Camera camera = mc.gameRenderer.getMainCamera();
-        Vec3 cameraPos = camera.getPosition();
+    public static void drawWhiteOutlineAroundBlock(Minecraft mc, PoseStack poseStack, BlockPos blockPos) {
+        // Get the current camera position (player's point of view)
+        Vec3 cameraPos = mc.gameRenderer.getMainCamera().getPosition();
 
         // Push the current matrix state
         poseStack.pushPose();
 
-        // Translate the poseStack based on the camera's position
-        poseStack.translate(-cameraPos.x, -cameraPos.y, -cameraPos.z);
+        // Translate the poseStack based on the difference between the block's world position and the camera position
+        poseStack.translate(blockPos.getX() - cameraPos.x, blockPos.getY() - cameraPos.y, blockPos.getZ() - cameraPos.z);
 
-        // Create the AABB for the block with slight deflation to avoid Z-fighting
-        AABB blockBounds = new AABB(blockPos).deflate(0.002D);
+        AABB blockBounds = new AABB(BlockPos.ZERO).deflate(- 0.002D);
 
-        // Get the buffer to render lines
-        VertexConsumer buffer = Minecraft.getInstance().renderBuffers().bufferSource().getBuffer(RenderType.lines());
+        MultiBufferSource.BufferSource bufferSource = mc.renderBuffers().bufferSource();
+        VertexConsumer buffer = bufferSource.getBuffer(RenderType.lines());
 
         // Render the white outline around the block
         LevelRenderer.renderLineBox(poseStack, buffer, blockBounds, 1.0F, 1.0F, 1.0F, 1.0F);
 
-        poseStack.popPose(); // Restore the pose stack to its previous state
+        // Pop the pose stack to restore it to the previous state
+        poseStack.popPose();
+
+        bufferSource.endBatch(RenderType.lines());
     }
+
 }

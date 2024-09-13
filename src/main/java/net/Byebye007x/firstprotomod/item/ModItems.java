@@ -21,6 +21,9 @@ public class ModItems extends Items {
     public static final RegistryObject<Item> RAW_RUBY = ITEMS.register("raw_ruby",
             () -> new Item(new Item.Properties()));
 
+    public static final RegistryObject<Item> RAINBOW_ORB = ITEMS.register("rainbow_orb",
+            () -> new ManaManager(new Item.Properties().stacksTo(1)));
+
     public static final RegistryObject<Item> PINE_CONE = ITEMS.register("pine_cone",
             () -> new FuelItem(new Item.Properties(), 400));
 
@@ -53,6 +56,9 @@ public class ModItems extends Items {
     public static final RegistryObject<Item> PLOY_SCYTHE = ITEMS.register("ploy_scythe",
             () -> new PloyScythe(ModToolTiers.RUBY, 15, -1.0F, new Item.Properties()
                     .rarity(Rarity.EPIC)));
+
+    public static final RegistryObject<Item> SACRED_SWORD = ITEMS.register("sacred_sword",
+            () -> new MagicSword(ModToolTiers.RUBY, 4, 0, new Item.Properties(), 20));
 
     public static final RegistryObject<Item> RUBY_SWORD = ITEMS.register("ruby_sword",
             () -> new SwordItem(ModToolTiers.RUBY, 4, 0, new Item.Properties()));

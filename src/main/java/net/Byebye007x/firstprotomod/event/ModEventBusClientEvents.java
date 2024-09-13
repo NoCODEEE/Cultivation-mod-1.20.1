@@ -111,12 +111,15 @@ public class ModEventBusClientEvents {
 
         @SubscribeEvent
         public static void onRenderWorldLast(RenderLevelStageEvent event) {
-            if (ToggleHandler.isAlt()) {
-                BlockWhiteBorder.renderBlockOutline(event.getPoseStack());
-                Minecraft.getInstance().renderBuffers().bufferSource().endBatch(RenderType.lines());
+            if (event.getStage() == RenderLevelStageEvent.Stage.AFTER_TRIPWIRE_BLOCKS) {
+                if (ToggleHandler.isAlt()) {
+                    BlockWhiteBorder.renderBlockOutline(event.getPoseStack());
+                    Minecraft.getInstance().renderBuffers().bufferSource().endBatch(RenderType.lines());
+                }
             }
         }
 
 
-     }
+
+    }
 }

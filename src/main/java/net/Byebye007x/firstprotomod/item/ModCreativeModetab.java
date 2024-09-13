@@ -45,6 +45,8 @@ public class ModCreativeModetab {
                         output.accept(ModItems.MAGIC_ROBE.get());
                         output.accept(ModItems.MAGIC_PANTS.get());
                         output.accept(ModItems.MAGIC_BOOTS.get());
+                        output.accept(ModItems.RAINBOW_ORB.get());
+                        output.accept(ModItems.SACRED_SWORD.get());
 
                         //Blocks
                         output.accept(ModBlocks.RUBY_ORE.get());

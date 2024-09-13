@@ -1,4 +1,4 @@
-package net.Byebye007x.firstprotomod.screen;
+package net.Byebye007x.firstprotomod.screen.GemPolishingTable;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.Byebye007x.firstprotomod.ProtoMod;

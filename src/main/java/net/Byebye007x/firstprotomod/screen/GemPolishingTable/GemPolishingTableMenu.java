@@ -1,7 +1,8 @@
-package net.Byebye007x.firstprotomod.screen;
+package net.Byebye007x.firstprotomod.screen.GemPolishingTable;
 
 import net.Byebye007x.firstprotomod.block.ModBlocks;
 import net.Byebye007x.firstprotomod.block.entity.GemPolishingTableBlockEntity;
+import net.Byebye007x.firstprotomod.screen.ModMenuTypes;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -21,7 +22,6 @@ public class GemPolishingTableMenu extends AbstractContainerMenu {
     public GemPolishingTableMenu(int pContainerId, Inventory inventory, FriendlyByteBuf extraData) {
         this(pContainerId, inventory, inventory.player.level().getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(2));
     }
-
 
     public GemPolishingTableMenu(int pContainerId, Inventory inventory, BlockEntity entity, ContainerData ContainerData) {
         super(ModMenuTypes.GEM_POLISHING_MENU.get(), pContainerId);
